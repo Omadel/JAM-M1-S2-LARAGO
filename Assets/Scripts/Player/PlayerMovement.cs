@@ -3,65 +3,77 @@ using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerMovement : MonoBehaviour
+[RequireComponent(typeof(AudioSource))]
+public class PlayerMovement : MovableObject
 {
-    public Tile actualTile;
-    public bool onMove = false;
-    public float timeMove = 0.2f;
-    public InputActionReference InputsDir;
+    
+    
+    public InputActionReference mouseClick;
     public InputActionReference mousePos;
-    public Vector2 startPosition=new Vector2();
-    public Vector3[] V3Dir = new Vector3[4] { Vector3.forward,Vector3.back, Vector3.right, Vector3.left };
+    public Vector2 startPosition = new Vector2();
+    public Vector2 endPosition = Vector2.zero;
     public AudioClip[] audioClips;
-
+    AudioSource audioSource;
+    private void OnEnable()
+    {
+        mouseClick.action.Enable();
+        mousePos.action.Enable();
+    }
     private void Start()
     {
-        if (Physics.SphereCast(new Ray(transform.position + (Vector3.up * 0.5f), Vector3.down), 0.2f, out RaycastHit hit, 0.75f))
+        audioSource = GetComponent<AudioSource>();
+        GetActualTile();
+
+        mouseClick.action.started += (ctr) =>
         {
-            if (hit.collider.GetComponent<Tile>())
-            {
-                actualTile = hit.collider.GetComponent<Tile>();
-            }
-        }
-        InputsDir.action.started += (ctr) => {startPosition= mousePos.action.ReadValue<Vector2>(); };
-        InputsDir.action.canceled += (ctr) => {};
+            startPosition = mousePos.action.ReadValue<Vector2>();
+        };
 
-
+        mouseClick.action.canceled += CaluculateDirection;
     }
-    private void Update()
+    public void CaluculateDirection(InputAction.CallbackContext obj)
     {
-
-
-    }
-    public void CaluculateDirection(Vector2 endPos)
-    {
+        endPosition = mousePos.action.ReadValue<Vector2>();
         int i = -1;
 
-        Vector2 delta =(endPos-startPosition).normalized;
-        = math.atan2(delta.x, delta.y);
+        Vector2 delta = (endPosition-startPosition).normalized;
+
+        float radian = math.atan2(delta.x, delta.y);
 
 
-
-        Move(i);
-
-    }
-    private void Move(int i)
-    {
-        if (onMove == false)
+        if (radian > Mathf.PI / 4f && radian < (3 * Mathf.PI / 4f))
         {
-            if (actualTile.neighbours.tiles[i] != null)
-            {
-                onMove = true;
-                transform.DOMove(actualTile.neighbours.tiles[i].OffsettedPosition, timeMove).OnComplete(() => { onMove = false; });
-                actualTile = actualTile.neighbours.tiles[i];
-                GetComponent<AudioSource>().PlayOneShot(audioClips[0]);
-            }
-            else
-            {
-                transform.DOPunchPosition(V3Dir[i] * 0.1f, 0.1f);
-                GetComponent<AudioSource>().PlayOneShot(audioClips[1]);
-
-            }
+            dir=3;
         }
+
+        if (radian < -Mathf.PI / 4f && radian > (-3 * Mathf.PI / 4f))
+        {
+            dir = 2;
+        }
+
+        if (Mathf.Abs(radian) > (3 * Mathf.PI / 4f) && Mathf.Abs(radian) < (5 * Mathf.PI / 4f))
+        {
+            dir = 0;
+        }
+
+        if (radian > -Mathf.PI / 4f && radian < Mathf.PI / 4f)
+        {
+            dir = 1; 
+        }
+        Move(dir);
     }
+
+    public override void NotSuccesfullMove(int i)
+    {
+        base.NotSuccesfullMove(i);
+        
+        audioSource.PlayOneShot(audioClips[1]);
+
+    }
+    public override void SuccesfullMove(int i)
+    {
+        base.SuccesfullMove(i);
+        audioSource.PlayOneShot(audioClips[0]);
+    }
+
 }

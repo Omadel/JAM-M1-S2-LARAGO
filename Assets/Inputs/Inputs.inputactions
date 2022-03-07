@@ -26,7 +26,7 @@
                 {
                     "name": "",
                     "id": "e7a5a310-4cfb-4765-be2c-b91e231824da",
-                    "path": "<Mouse>/press",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "Android",
