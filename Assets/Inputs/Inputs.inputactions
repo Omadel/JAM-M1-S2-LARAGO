@@ -12,75 +12,22 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
-                },
-                {
-                    "name": "mousePos",
-                    "type": "Value",
-                    "id": "c2bdafd0-2f6b-45cd-9362-dc765e02d3fa",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": ""
                 }
             ],
             "bindings": [
                 {
                     "name": "",
-                    "id": "e7a5a310-4cfb-4765-be2c-b91e231824da",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Android",
-                    "action": "Click",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "345e8320-cb4d-4a48-b176-a9cb51fc5bc9",
-                    "path": "<Touchscreen>/press",
+                    "path": "",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Click",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "fe906a5c-0118-4f83-97f5-b08a53b2d790",
-                    "path": "<Mouse>/position",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "mousePos",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "e0864b67-899c-4dfa-9aa6-e3da3d4e2f8f",
-                    "path": "<Touchscreen>/touch1/position",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Android",
-                    "action": "mousePos",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
             ]
         }
     ],
-    "controlSchemes": [
-        {
-            "name": "Android",
-            "bindingGroup": "Android",
-            "devices": [
-                {
-                    "devicePath": "<Touchscreen>",
-                    "isOptional": false,
-                    "isOR": false
-                }
-            ]
-        }
-    ]
+    "controlSchemes": []
 }
