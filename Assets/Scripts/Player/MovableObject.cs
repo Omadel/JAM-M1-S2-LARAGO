@@ -11,7 +11,6 @@ public abstract class MovableObject : MonoBehaviour
 
     public void Move(int i)
     {
-        Debug.Log(i);
         if (onMove == false)
         {
             if (actualTile.neighbours.tiles[i] != null)

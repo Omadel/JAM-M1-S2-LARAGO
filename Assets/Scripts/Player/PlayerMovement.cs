@@ -10,6 +10,7 @@ public class PlayerMovement : MovableObject
     
     public InputActionReference mouseClick;
     public InputActionReference mousePos;
+    public LookAtMouse pointer;
     public Vector2 startPosition = new Vector2();
     public Vector2 endPosition = Vector2.zero;
     public AudioClip[] audioClips;
@@ -27,12 +28,14 @@ public class PlayerMovement : MovableObject
         mouseClick.action.started += (ctr) =>
         {
             startPosition = mousePos.action.ReadValue<Vector2>();
+            pointer.gameObject.SetActive(true);
         };
 
         mouseClick.action.canceled += CaluculateDirection;
     }
     public void CaluculateDirection(InputAction.CallbackContext obj)
     {
+        pointer.gameObject.SetActive(false);
         endPosition = mousePos.action.ReadValue<Vector2>();
         int i = -1;
 

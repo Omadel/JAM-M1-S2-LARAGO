@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class ExecuteAllCubeFindNeighbours : MonoBehaviour
 {
-    [ContextMenu("ExecuteOrder66")]
-    void ExecuteOrder66()
+   
+    public static void ExecuteOrder66()
     {
         foreach (var item in FindObjectsOfType<Tile>())
         {
             item.FindNeighbours();
+
         }
     }
 }
