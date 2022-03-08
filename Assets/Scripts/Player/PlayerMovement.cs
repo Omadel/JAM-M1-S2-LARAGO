@@ -1,7 +1,9 @@
 using DG.Tweening;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEditor;
 using UnityEngine.InputSystem;
+using Etienne.Feedback;
 
 [RequireComponent(typeof(AudioSource))]
 public class PlayerMovement : MovableObject
@@ -10,11 +12,13 @@ public class PlayerMovement : MovableObject
     
     public InputActionReference mouseClick;
     public InputActionReference mousePos;
-    public LookAtMouse pointer;
+    public DirectionCadrant pointer;
     public Vector2 startPosition = new Vector2();
     public Vector2 endPosition = Vector2.zero;
     public AudioClip[] audioClips;
     AudioSource audioSource;
+    //public  feedback;
+
     private void OnEnable()
     {
         mouseClick.action.Enable();
@@ -29,6 +33,9 @@ public class PlayerMovement : MovableObject
         {
             startPosition = mousePos.action.ReadValue<Vector2>();
             pointer.gameObject.SetActive(true);
+            pointer.startPoint = startPosition;
+            pointer.GetComponent<RectTransform>().localPosition = startPosition - new Vector2(Screen.width / 2f, Screen.height / 2f);
+
         };
 
         mouseClick.action.canceled += CaluculateDirection;
@@ -42,7 +49,6 @@ public class PlayerMovement : MovableObject
         Vector2 delta = (endPosition-startPosition).normalized;
 
         float radian = math.atan2(delta.x, delta.y);
-
 
         if (radian > Mathf.PI / 4f && radian < (3 * Mathf.PI / 4f))
         {
@@ -69,9 +75,8 @@ public class PlayerMovement : MovableObject
     public override void NotSuccesfullMove(int i)
     {
         base.NotSuccesfullMove(i);
-        
         audioSource.PlayOneShot(audioClips[1]);
-
+        
     }
     public override void SuccesfullMove(int i)
     {

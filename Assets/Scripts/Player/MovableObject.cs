@@ -42,7 +42,6 @@ public abstract class MovableObject : MonoBehaviour
     }
     public virtual void NotSuccesfullMove(int i)
     {
-        transform.DOPunchPosition(V3Dir[i] * 0.1f, 0.1f);
     }
 }
 
