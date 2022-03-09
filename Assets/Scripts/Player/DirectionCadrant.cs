@@ -54,7 +54,6 @@ public class DirectionCadrant : MonoBehaviour
                 }
 
                 directionOBJ[dir].SetActive(true);
-                Debug.Log(dir + " " + seteddir);
             }
         
     }
