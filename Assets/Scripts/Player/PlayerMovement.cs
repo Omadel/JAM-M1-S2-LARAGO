@@ -3,7 +3,6 @@ using Unity.Mathematics;
 using UnityEngine;
 using UnityEditor;
 using UnityEngine.InputSystem;
-using Etienne.Feedback;
 
 [RequireComponent(typeof(AudioSource))]
 public class PlayerMovement : MovableObject
