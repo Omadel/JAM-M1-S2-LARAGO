@@ -9,7 +9,17 @@ public class InventoryLevel : ScriptableObject
 [System.Serializable]
 public struct MagnetInInventory
 {
-    public Magnet magnet;
+    public MagnetType magnet;
     public int number;
+    
+}
+[System.Serializable] 
+public enum MagnetType
+{
+    Omni,
+    Uni_North,
+    Uni_South,
+    Uni_Est,
+    Uni_West 
 }
 

@@ -26,7 +26,7 @@ public class Tile : MonoBehaviour
 
         if (Physics.SphereCast(new Ray(transform.position, Vector3.up), 0.2f, out RaycastHit hit, 0.75f))
         {
-            if (hit.collider.GetComponent<Tile>())
+            if (hit.collider.GetComponent<Tile>()|| hit.collider.GetComponent<Magnet>())
             {
                 CheckNeighbours(this);
                 Debug.Log("Hitted");

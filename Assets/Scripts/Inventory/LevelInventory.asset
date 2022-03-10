@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: LevelInventory
   m_EditorClassIdentifier: 
   magnets:
-  - magnet: {fileID: 0}
+  - magnet: 0
+    number: 1
+  - magnet: 0
+    number: 5
+  - magnet: 0
     number: 0
-  - magnet: {fileID: 0}
-    number: 0
-  - magnet: {fileID: 0}
-    number: 0
-  - magnet: {fileID: 0}
+  - magnet: 0
     number: 0
