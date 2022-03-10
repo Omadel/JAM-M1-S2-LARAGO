@@ -10,7 +10,6 @@ public class ExecuteAllCubeFindNeighbours : MonoBehaviour
         foreach (var item in FindObjectsOfType<Tile>())
         {
             item.FindNeighbours();
-
         }
     }
 }
