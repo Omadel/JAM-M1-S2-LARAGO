@@ -15,10 +15,12 @@ public class Spawnner : MonoBehaviour
     }
     public bool isPuttingMagnet = false;
     List<Tile> tiles = new List<Tile>();
+    public InventoryCell cell;
 
-    public void SetPositions(Tile tile, MagnetType type)
+    public void SetPositions(Tile tile, MagnetType type,InventoryCell _cell)
     {
         transform.position = tile.OffsettedPosition;
+        cell=_cell;
         foreach (var item in tile.neighbours.tiles)
         {
             item.GetComponent<MeshRenderer>().material.color = Color.red;
@@ -45,13 +47,14 @@ public class Spawnner : MonoBehaviour
 
             }
             tiles.Clear();
+            cell = null;
         }
         PlayerMovement.instance.mouseClick.action.started -= TestClick;
     }
     public void SetMagnetAt(Tile tile)
     {
         Debug.Log("valide Place");
-
+        cell.ReduceNumber();
     }
 }
 

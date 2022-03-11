@@ -13,17 +13,32 @@ public class InventoryCell : MonoBehaviour
         magnetsImage.sprite = RessourcesHolder.instance.GetMagSprite(magnetIn.magnet);
         numberLeft = magnetIn.number;
         SetText();
+        TestNumber();
     }
     public void PutDownSequence()
     {
         if (numberLeft > 0)
         {
-            Spawnner.instance.SetPositions(PlayerMovement.instance.actualTile,magType);
+            Spawnner.instance.SetPositions(PlayerMovement.instance.actualTile,magType,this);
         }
     }
     void SetText()
     {
         magnetsNumber.SetText(numberLeft.ToString());
+    }
+    void TestNumber()
+    {
+        if(numberLeft<=0)
+        {
+            magnetsImage.color=new Color(0.5f,0.5f,0.5f);
+            GetComponent<Button>().interactable = false;
+        }
+    }
+    public void ReduceNumber()
+    {
+        numberLeft--;
+        SetText();
+        TestNumber();
     }
 }
 
