@@ -6,6 +6,16 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(AudioSource))]
 public class PlayerMovement : MovableObject
 {
+    public static PlayerMovement instance;
+    void Awake()
+    {
+        if (PlayerMovement.instance != null)
+        {
+            Debug.LogError("This is more than One PlayerMovement");
+        }
+        PlayerMovement.instance = this;
+    }
+
 
 
     public InputActionReference mouseClick;
@@ -14,9 +24,10 @@ public class PlayerMovement : MovableObject
     public Vector2 startPosition = new Vector2();
     public Vector2 endPosition = Vector2.zero;
     public AudioClip[] audioClips;
+    
 
     AudioSource audioSource;
-    bool whereOnUI=false;
+    bool isNotMovable=false;
     //public  feedback;
 
     private void OnEnable()
@@ -31,25 +42,29 @@ public class PlayerMovement : MovableObject
 
         mouseClick.action.started += (ctr) =>
         {
-
-            if (EventSystem.current.IsPointerOverGameObject(0))
-            {
-                whereOnUI = true;
-                return;
-            }
-            startPosition = mousePos.action.ReadValue<Vector2>();
-            pointer.gameObject.SetActive(true);
-            pointer.startPoint = startPosition;
-            pointer.GetComponent<RectTransform>().localPosition = startPosition - new Vector2(Screen.width / 2f, Screen.height / 2f);
-
+            StartMoveClick();
 
         };
 
         mouseClick.action.canceled += CaluculateDirection;
     }
+
+    private void StartMoveClick()
+    {
+        if (EventSystem.current.IsPointerOverGameObject(0) || Spawnner.instance.isPuttingMagnet)
+        {
+            isNotMovable = true;
+            return;
+        }
+        startPosition = mousePos.action.ReadValue<Vector2>();
+        pointer.gameObject.SetActive(true);
+        pointer.startPoint = startPosition;
+        pointer.GetComponent<RectTransform>().localPosition = startPosition - new Vector2(Screen.width / 2f, Screen.height / 2f);
+    }
+
     public void CaluculateDirection(InputAction.CallbackContext obj)
     {
-        if (whereOnUI == false)
+        if (isNotMovable == false)
         {
             pointer.gameObject.SetActive(false);
             endPosition = mousePos.action.ReadValue<Vector2>();
@@ -82,7 +97,7 @@ public class PlayerMovement : MovableObject
         }
         else
         {
-            whereOnUI = false;
+            isNotMovable = false;
         }
     }
 

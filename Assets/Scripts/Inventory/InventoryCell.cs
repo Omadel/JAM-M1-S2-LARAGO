@@ -18,7 +18,7 @@ public class InventoryCell : MonoBehaviour
     {
         if (numberLeft > 0)
         {
-            
+            Spawnner.instance.SetPositions(PlayerMovement.instance.actualTile,magType);
         }
     }
     void SetText()
