@@ -10,7 +10,12 @@ public class InventoryCell : MonoBehaviour
     int numberLeft;
     public void SetUp(MagnetInInventory magnetIn)
     {
-        magnetsImage.sprite = RessourcesHolder.instance.GetMagSprite(magnetIn.magnet);
+        string key="s_";
+        key+=magnetIn.magnet.ToString();
+        key += "Magnet";
+        Debug.Log(key);
+        var ressource = RessourcesHolder.GetRessources(key);
+        magnetsImage.sprite = ressource as Sprite;
         numberLeft = magnetIn.number;
         SetText();
         TestNumber();

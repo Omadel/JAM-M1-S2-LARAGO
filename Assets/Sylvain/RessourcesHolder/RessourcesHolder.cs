@@ -1,76 +1,62 @@
-using RotaryHeart.Lib.SerializableDictionary;
+using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-
+[DefaultExecutionOrder(-1)]
 public class RessourcesHolder : MonoBehaviour
 {
-    public static RessourcesHolder instance;
 
+    public List<Object> gameObjects;
+    private static Dictionary<string, Object> Objects = new Dictionary<string, Object>();
     private void Awake()
     {
-        if (RessourcesHolder.instance != null)
+        creatDico(gameObjects);
+    }
+    public void creatDico(List<Object> list)
+    {
+        Objects = new Dictionary<string, Object>();
+        foreach (Object item in list)
         {
-            Debug.Log("there is more than 1 ressources holder");
+            string key = "";
+            if (item is GameObject)
+            {
+                key += "go";
+            }
+            if (item is Sprite)
+            {
+                key += "s";
+            }
+
+                key += "_" + item.name;
+            Objects.Add(key, item);
         }
-        RessourcesHolder.instance = this;
-
+        foreach (KeyValuePair<string, Object> item in Objects)
+        {
+            Debug.Log(item.Key);
+        }
     }
-
-    public SerializableDictionaryBase<string, GameObject> gameObjects;
-    public SerializableDictionaryBase<string, Sprite> sprites;
-    public GameObject GetGO(string name)
+    public static Object GetRessources(ObjectKey name)
     {
-        return gameObjects[name];
-
+        Debug.Log(name.ToString());
+        return Objects[name.ToString()];
     }
-    public GameObject GetGO(GameObjectKey name)
+    public static Object GetRessources(string name)
     {
-        return gameObjects[name.ToString()];
-
-    }
-    public GameObject GetMagGO(MagnetType name)
-    {
-        return gameObjects["Mag_"+name.ToString()];
-
-    }
-    public Sprite GetSprite(string name)
-    {
-        return sprites[name];
-
-    }
-    public Sprite GetMagSprite(MagnetType name)
-    {
-        return sprites["Mag_" + name.ToString()];
-
+        return Objects[name];
     }
     public void UpdateEnums()
     {
-        
-        string GOPath = "Assets/Scripts/EnumRessourcesHolder/GameObjectKey.cs";
+
+        creatDico(gameObjects);
+        string GOPath = "Assets/Scripts/EnumRessourcesHolder/ObjectKey.cs";
         if (File.Exists(GOPath) == false)
         {
             File.Create(GOPath);
         }
         using (StreamWriter outfile = new StreamWriter(GOPath))
         {
-            outfile.WriteLine("public enum GameObjectKey {");
-            foreach (var item in gameObjects)
-            {
-                outfile.WriteLine(item.Key + ",");
-            }
-            outfile.WriteLine("}");
-
-        }
-        string SPath = "Assets/Scripts/EnumRessourcesHolder/SpritesKey.cs";
-        if (File.Exists(SPath) == false)
-        {
-            File.Create(SPath);
-        }
-        using (StreamWriter outfile = new StreamWriter(SPath))
-        {
-            outfile.WriteLine("public enum SpritesKey {");
-            foreach (var item in sprites)
+            outfile.WriteLine("public enum ObjectKey {");
+            foreach (KeyValuePair<string, Object> item in Objects)
             {
                 outfile.WriteLine(item.Key + ",");
             }
