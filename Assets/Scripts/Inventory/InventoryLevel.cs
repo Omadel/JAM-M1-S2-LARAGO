@@ -17,9 +17,9 @@ public struct MagnetInInventory
 public enum MagnetType
 {
     Omni,
-    Uni_North,
-    Uni_South,
-    Uni_Est,
-    Uni_West 
+    Forward,
+    Back,
+    Right,
+    Left
 }
 

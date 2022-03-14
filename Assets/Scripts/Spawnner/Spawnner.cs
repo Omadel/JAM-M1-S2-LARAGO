@@ -17,6 +17,7 @@ public class Spawnner : MonoBehaviour
     public bool isPuttingMagnet = false;
     List<Tile> tiles = new List<Tile>();
     public InventoryCell cell;
+    public MagnetType magType;
 
     public void SetPositions(Tile tile, MagnetType type,InventoryCell _cell)
     {
@@ -29,6 +30,7 @@ public class Spawnner : MonoBehaviour
         }
         isPuttingMagnet = true;
         PlayerMovement.instance.mouseClick.action.started += TestClick;
+        magType = type;
     }
     public void TestClick(InputAction.CallbackContext obj)
     {
@@ -45,7 +47,6 @@ public class Spawnner : MonoBehaviour
             foreach (var item in tiles)
             {
                 item.GetComponent<MeshRenderer>().material.color = Color.white;
-
             }
             tiles.Clear();
             cell = null;
@@ -55,7 +56,18 @@ public class Spawnner : MonoBehaviour
     public void SetMagnetAt(Tile tile)
     {
         Debug.Log("valide Place");
+        string magSpec = magType==MagnetType.Omni?"Omni":"";
+        Debug.Log(magSpec);
+        string key = "go_" +magSpec+"Magnet";
+        var ressource=RessourcesHolder.GetRessources(key);
+        GameObject magnet = Instantiate(ressource as GameObject);
+        if (magType != MagnetType.Omni)
+        {
+            magnet.GetComponent<Magnet>().SetDir((Direction)((int)magType - 1));
+        }
+        magnet.transform.position =tile.OffsettedPosition;
         cell.ReduceNumber();
+        Destroy(tile);
     }
 }
 

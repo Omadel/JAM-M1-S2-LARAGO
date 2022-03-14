@@ -22,12 +22,13 @@ public class RessourcesHolder : MonoBehaviour
             {
                 key += "go";
             }
-            if (item is Sprite)
+            if (item is Sprite||item is Texture2D)
             {
                 key += "s";
             }
             key += "_" + item.name;
             Objects.Add(key, item);
+            Debug.Log(key);
         }
     }
     public static Object GetRessources(ObjectKey name)

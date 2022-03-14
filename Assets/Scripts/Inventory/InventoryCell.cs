@@ -17,6 +17,7 @@ public class InventoryCell : MonoBehaviour
         var ressource = RessourcesHolder.GetRessources(key);
         magnetsImage.sprite = ressource as Sprite;
         numberLeft = magnetIn.number;
+        magType = magnetIn.magnet;
         SetText();
         TestNumber();
     }

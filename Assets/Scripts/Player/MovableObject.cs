@@ -41,10 +41,7 @@ public abstract class MovableObject : MonoBehaviour
         Debug.DrawRay(ray.origin, ray.direction, Color.black, 10f);
         if (Physics.Raycast(ray, out RaycastHit hit, 1f))
         {
-            if (hit.collider.TryGetComponent<Tile>(out currentTile))
-            {
-                Debug.Log("Collide with" + hit.collider.name);
-            }
+            if (hit.collider.TryGetComponent<Tile>(out currentTile)) { };
         }
     }
 

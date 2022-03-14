@@ -5,12 +5,23 @@ using UnityEngine;
 public class Magnet : MonoBehaviour
 {
     public Direction direction;
-    RaycastHit hit;
+
     Ray ray;
-
-
+    [SerializeField]
+    LayerMask layer_mask;
     // Start is called before the first frame update
     void Start()
+    {
+        CheckDirection();
+    }
+    public void  SetDir(Direction dir)
+    {
+        direction = dir;
+        CheckDirection();
+    }
+
+
+    private void CheckDirection()
     {
         switch (direction)
         {
@@ -34,11 +45,12 @@ public class Magnet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        int layer_mask = LayerMask.GetMask("Default");
+        
         Debug.DrawRay(transform.position, ray.direction, Color.red);
-        if (Physics.Raycast(ray, out hit, 1f, layer_mask, QueryTriggerInteraction.Ignore))
+        if (Physics.Raycast(ray, out RaycastHit hit, 1f, layer_mask, QueryTriggerInteraction.Ignore))
         {
-            Train.instance.Rotate(direction);
+            if(hit.collider!=null&&hit.collider.gameObject.TryGetComponent<Train>(out Train train))
+                train.Rotate(direction);
         }
     }
 
