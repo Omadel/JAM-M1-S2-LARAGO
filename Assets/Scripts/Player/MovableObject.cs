@@ -1,15 +1,17 @@
 using DG.Tweening;
 using UnityEngine;
+using Etienne;
 public abstract class MovableObject : MonoBehaviour
 {
 
-    public System.Action<bool> OnMove;
+    public System.Action<bool,Vector3> OnMove;
 
     [SerializeField] private float moveDuration = 0.2f;
 
     public Tile currentTile;
 
     private bool isMoving = false;
+    Vector3 currentDirection;
 
     protected void Move(Direction direction)
     {
@@ -18,15 +20,17 @@ public abstract class MovableObject : MonoBehaviour
             if (currentTile.neighbours.tiles[(int)direction] != null)
             {
                 isMoving = true;
-                transform.DOMove(currentTile.neighbours.tiles[(int)direction].OffsettedPosition, moveDuration).OnComplete(CompleteMove);
+                Vector3 endPosition = currentTile.neighbours.tiles[(int)direction].OffsettedPosition;
+                transform.DOMove(endPosition, moveDuration).OnComplete(CompleteMove);
                 currentTile.ExecuteExitCode();
                 currentTile = currentTile.neighbours.tiles[(int)direction];
-                currentTile.ExecuteEnterCode(); 
-                OnMove?.Invoke(true);
+                currentTile.ExecuteEnterCode();
+                currentDirection = transform.position.Direction(endPosition);
+                OnMove?.Invoke(true,currentDirection);
             }
             else
             {
-                OnMove?.Invoke(false);
+                OnMove?.Invoke(false,currentDirection);
             }
         }
     }

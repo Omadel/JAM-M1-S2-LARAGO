@@ -12,8 +12,9 @@ namespace LaraGoLike
             GetComponent<PlayerMovement>().OnMove += PlayEvent;
         }
 
-        private void PlayEvent(bool sucess)
+        private void PlayEvent(bool sucess,Vector3 direction)
         {
+            //todo direction;
             if(sucess) StartCoroutine(successMoveEvent.Execute(gameObject));
             else StartCoroutine(failMoveEvent.Execute(gameObject));
         }
