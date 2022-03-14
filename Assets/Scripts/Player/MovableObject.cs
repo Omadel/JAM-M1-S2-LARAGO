@@ -11,7 +11,7 @@ public abstract class MovableObject : MonoBehaviour
     public Tile currentTile;
 
     private bool isMoving = false;
-    Vector3 currentDirection;
+    Vector3 currentVectorDirection;
 
     protected void Move(Direction direction)
     {
@@ -25,12 +25,12 @@ public abstract class MovableObject : MonoBehaviour
                 currentTile.ExecuteExitCode();
                 currentTile = currentTile.neighbours.tiles[(int)direction];
                 currentTile.ExecuteEnterCode();
-                currentDirection = transform.position.Direction(endPosition);
-                OnMove?.Invoke(true,currentDirection);
+                currentVectorDirection = transform.position.Direction(endPosition);
+                OnMove?.Invoke(true,currentVectorDirection);
             }
             else
             {
-                OnMove?.Invoke(false,currentDirection);
+                OnMove?.Invoke(false,currentVectorDirection);
             }
         }
     }
