@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78a18cbf91f1dec4da30f7788aa777b9, type: 3}
+  m_Name: FailMoveEvent
+  m_EditorClassIdentifier: 
+  feedbacks:
+  - id: 0
+  - id: 1
+  references:
+    version: 1
+    00000000:
+      type: {class: PlaySound, ns: Etienne.Feedback, asm: Etienne}
+      data:
+        _IsAttached: 1
+        _Cue:
+          _Clips:
+          - {fileID: 8300000, guid: cd9b734b3e6d58345a1200d9b71dc4c4, type: 3}
+          _ParametersSO: {fileID: 11400000, guid: e880b991287bb76418672257065f6f0e,
+            type: 2}
+          _Parameters:
+            audioMixerGroup: {fileID: 0}
+            priority: 128
+            volume: 1
+            pitch: 1
+            loop: 0
+            stereoPan: 0
+            spacialBlend: 0
+            minDistance: 1
+            maxDistance: 500
+    00000001:
+      type: {class: CameraShake, ns: Etienne.Feedback, asm: Assembly-CSharp}
+      data:
+        _IsAttached: 0
+        _RawSignal: {fileID: 11400000, guid: f9c912a09172e724ab67f2b49b6909cd, type: 2}
+        _AmplitudeGain: 2
+        _FrequencyGain: 2
+        _Randomize: 1
+        _TimeEnvelope:
+          m_AttackShape:
+            serializedVersion: 2
+            m_Curve: []
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+          m_DecayShape:
+            serializedVersion: 2
+            m_Curve: []
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+          m_AttackTime: 0
+          m_SustainTime: 0.2
+          m_DecayTime: 0.7
+          m_ScaleWithImpact: 1
+          m_HoldForever: 0
+        _ImpactRadius: 100
+        _DirectionMode: 0
+        _DissipationMode: 0
+        _DissipationDistance: 1000
+        _PropagationSpeed: 345
