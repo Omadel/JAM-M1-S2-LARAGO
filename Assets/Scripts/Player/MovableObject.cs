@@ -9,17 +9,17 @@ public abstract class MovableObject : MonoBehaviour
     public bool onMove = false;
     public Vector3[] V3Dir = new Vector3[4] { Vector3.forward, Vector3.back, Vector3.right, Vector3.left };
 
-    public void Move(int i)
+    public void Move()
     {
         if (onMove == false)
         {
-            if (actualTile.neighbours.tiles[i] != null)
+            if (actualTile.neighbours.tiles[dir] != null)
             {
-                SuccesfullMove(i);
+                SuccesfullMove(dir);
             }
             else
             {
-                NotSuccesfullMove(i);
+                NotSuccesfullMove(dir);
             }
         }
     }
