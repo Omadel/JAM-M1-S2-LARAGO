@@ -26,17 +26,12 @@ public class RessourcesHolder : MonoBehaviour
             {
                 key += "s";
             }
-                key += "_" + item.name;
+            key += "_" + item.name;
             Objects.Add(key, item);
-        }
-        foreach (KeyValuePair<string, Object> item in Objects)
-        {
-            Debug.Log(item.Key);
         }
     }
     public static Object GetRessources(ObjectKey name)
     {
-        Debug.Log(name.ToString());
         return Objects[name.ToString()];
     }
     public static Object GetRessources(string name)

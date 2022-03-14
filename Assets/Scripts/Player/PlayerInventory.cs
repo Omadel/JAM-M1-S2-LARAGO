@@ -14,10 +14,5 @@ namespace LaraGoLike
             
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-        
-        }
     }
 }
