@@ -67,6 +67,7 @@ public class Spawnner : MonoBehaviour
         }
         magnet.transform.position =tile.OffsettedPosition;
         cell.ReduceNumber();
+        Destroy(tile);
     }
 }
 

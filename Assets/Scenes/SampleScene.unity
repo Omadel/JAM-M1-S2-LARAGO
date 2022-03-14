@@ -2913,7 +2913,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 39789934, guid: 718910dd5c29ee140bb21c89a54e942e, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 39789935, guid: 718910dd5c29ee140bb21c89a54e942e, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 39789935, guid: 718910dd5c29ee140bb21c89a54e942e, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 39789935, guid: 718910dd5c29ee140bb21c89a54e942e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 39789935, guid: 718910dd5c29ee140bb21c89a54e942e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 39789935, guid: 718910dd5c29ee140bb21c89a54e942e, type: 3}
       propertyPath: m_LocalRotation.w
