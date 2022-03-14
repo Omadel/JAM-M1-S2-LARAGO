@@ -132,7 +132,9 @@ public class TilesNeighbours
     public void SetTile(Tile tile, Direction dir)
     {
         tiles[(int)dir] = tile;
+#if UNITY_EDITOR
         EditorUtility.SetDirty(tiles[(int)dir]);
+#endif
     }
     public List<Tile> GetPossableTiles()
     {
