@@ -5,7 +5,7 @@ using UnityEngine;
 public class Magnet : MonoBehaviour
 {
     public Direction direction;
-    RaycastHit hit;
+
     Ray ray;
     [SerializeField]
     LayerMask layer_mask;
@@ -47,7 +47,7 @@ public class Magnet : MonoBehaviour
     {
         
         Debug.DrawRay(transform.position, ray.direction, Color.red);
-        if (Physics.Raycast(ray, out hit, 1f, layer_mask, QueryTriggerInteraction.Ignore))
+        if (Physics.Raycast(ray, out RaycastHit hit, 1f, layer_mask, QueryTriggerInteraction.Ignore))
         {
             if(hit.collider!=null&&hit.collider.gameObject.TryGetComponent<Train>(out Train train))
                 train.Rotate(direction);

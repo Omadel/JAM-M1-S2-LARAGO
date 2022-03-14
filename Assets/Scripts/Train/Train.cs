@@ -31,7 +31,6 @@ namespace LaraGoLike
             if (_timer > 1)
             {
                 _timer = 0;
-                Debug.Log("Move");
                 Move(currentDirection);
             }
         }
