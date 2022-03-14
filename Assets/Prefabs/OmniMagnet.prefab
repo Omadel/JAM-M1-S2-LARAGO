@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6438942501347370487}
   - component: {fileID: 6438942501347370484}
   m_Layer: 0
-  m_Name: 'Omnimagnet '
+  m_Name: OmniMagnet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -125,3 +125,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 320fe075e3cba3f42806b54ce72c1470, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  layer_mask:
+    serializedVersion: 2
+    m_Bits: 1
