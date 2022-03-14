@@ -27,7 +27,6 @@ namespace LaraGoLike
 
         private void Update()
         {
-            Debug.DrawRay(transform.position + (Vector3.up * 0.5f), Vector3.down, Color.red);
             _timer += Time.deltaTime;
             if (_timer > 1)
             {
