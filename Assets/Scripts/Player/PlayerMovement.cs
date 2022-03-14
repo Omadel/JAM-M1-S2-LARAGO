@@ -65,7 +65,6 @@ public class PlayerMovement : MovableObject
             float radian = math.atan2(delta.x, delta.y);
 
             Direction direction = Direction.Forward;
-
             const float PIQuart = Mathf.PI / 4f;
 
             if(radian > PIQuart && radian < (3 * PIQuart))

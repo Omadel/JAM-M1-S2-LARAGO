@@ -13,6 +13,7 @@ public class Spawnner : MonoBehaviour
         }
         Spawnner.instance = this;
     }
+
     public bool isPuttingMagnet = false;
     List<Tile> tiles = new List<Tile>();
     public InventoryCell cell;
@@ -21,7 +22,7 @@ public class Spawnner : MonoBehaviour
     {
         transform.position = tile.OffsettedPosition;
         cell=_cell;
-        foreach (var item in tile.neighbours.tiles)
+        foreach (var item in tile.neighbours.GetPossableTiles())
         {
             item.GetComponent<MeshRenderer>().material.color = Color.red;
             tiles.Add(item);

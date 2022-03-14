@@ -19,7 +19,9 @@ public abstract class MovableObject : MonoBehaviour
             {
                 isMoving = true;
                 transform.DOMove(currentTile.neighbours.tiles[(int)direction].OffsettedPosition, moveDuration).OnComplete(CompleteMove);
+                currentTile.ExecuteExitCode();
                 currentTile = currentTile.neighbours.tiles[(int)direction];
+                currentTile.ExecuteEnterCode(); 
                 OnMove?.Invoke(true);
             }
             else

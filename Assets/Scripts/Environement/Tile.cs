@@ -21,6 +21,14 @@ public class Tile : MonoBehaviour
             }
         }
     }
+    public virtual void ExecuteEnterCode(){
+
+
+    }
+    public virtual void ExecuteExitCode(){
+
+    }
+
     public void FindNeighbours()
     {
 
@@ -78,7 +86,7 @@ public class Tile : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
 
-        foreach (Tile item in neighbours.GetNoNullTiles())
+        foreach (Tile item in neighbours.GetPossableTiles())
         {
             Debug.DrawLine(transform.position + offset, item.transform.position + item.offset, Color.red);
         }
@@ -126,12 +134,13 @@ public class TilesNeighbours
         tiles[(int)dir] = tile;
         EditorUtility.SetDirty(tiles[(int)dir]);
     }
-    public List<Tile> GetNoNullTiles()
+    public List<Tile> GetPossableTiles()
     {
         List<Tile> tempTiles = new List<Tile>();
         for (int i = 0; i < tiles.Length; i++)
         {
-            if (tiles[i] != null)
+            
+            if (tiles[i] != null&&(tiles[i] is NoneSpawnnableTile)==false)
             {
                 tempTiles.Add(tiles[i]);
             }
