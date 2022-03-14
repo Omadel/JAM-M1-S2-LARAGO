@@ -1,9 +1,7 @@
 using DG.Tweening;
 using UnityEngine;
-
 public abstract class MovableObject : MonoBehaviour
 {
-    protected enum Direction : int { Forward, Back, Right, Left }
 
     public System.Action<bool> OnMove;
 
@@ -32,6 +30,7 @@ public abstract class MovableObject : MonoBehaviour
 
     public void GetCurrentTile()
     {
+        
         if(Physics.Raycast(new Ray(transform.position + (Vector3.up * 0.5f), Vector3.down), out RaycastHit hit, 1f))
         {
             hit.collider.TryGetComponent<Tile>(out currentTile);

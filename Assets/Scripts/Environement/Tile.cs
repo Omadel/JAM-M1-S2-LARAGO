@@ -26,7 +26,7 @@ public class Tile : MonoBehaviour
 
         if (Physics.SphereCast(new Ray(transform.position, Vector3.up), 0.2f, out RaycastHit hit, 0.75f))
         {
-            if (hit.collider.GetComponent<Tile>()|| hit.collider.GetComponent<Magnet>())
+            if (hit.collider.GetComponent<Tile>() || hit.collider.GetComponent<Magnet>())
             {
                 CheckNeighbours(this);
                 Debug.Log("Hitted");
@@ -86,15 +86,7 @@ public class Tile : MonoBehaviour
 [System.Serializable]
 public class TilesNeighbours
 {
-
-    public const int NORTH = 0;
-    public const int SOUTH = 1;
-    public const int EST = 2;
-    public const int WEST = 3;
-
     public Tile[] tiles = new Tile[4];
-
-
 
     public bool Contains(Tile tile)
     {
@@ -128,7 +120,7 @@ public class TilesNeighbours
 
     }
     public void Add(Tile tile, Direction dir)
-    { 
+    {
         tiles[(int)dir] = tile;
     }
     public List<Tile> GetNoNullTiles()
@@ -145,4 +137,3 @@ public class TilesNeighbours
         return tempTiles;
     }
 }
-public enum Direction { North, South, Est, West };

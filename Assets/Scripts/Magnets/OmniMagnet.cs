@@ -24,8 +24,6 @@ namespace LaraGoLike
             Backray = new Ray(transform.position, Vector3.back);
         }
 
-
-
         private void Update()
         {
             Debug.DrawRay(transform.position, Vector3.left, Color.red);
@@ -36,22 +34,23 @@ namespace LaraGoLike
             int layer_mask = LayerMask.GetMask("Default");
             if (Physics.Raycast(Leftray,out Lefthit, 1f, layer_mask,QueryTriggerInteraction.Ignore))
             {
-                Train.instance.dir = 3;
+                Train.instance.Rotate(Direction.Left);
             }
             if (Physics.Raycast(Rightray, out Righthit, 1f, layer_mask, QueryTriggerInteraction.Ignore))
             {
-                Train.instance.dir = 2;
+             
+                Train.instance.Rotate(Direction.Right);
                 
             }
             if (Physics.Raycast(Topray, out Tophit, 1f, layer_mask, QueryTriggerInteraction.Ignore))
             {
-                Train.instance.dir = 0;
-                
+                Train.instance.Rotate(Direction.Forward);
+
             }
             if (Physics.Raycast(Backray, out Backhit, 1f, layer_mask, QueryTriggerInteraction.Ignore))
             {
-                Train.instance.dir = 1;
-                
+                Train.instance.Rotate(Direction.Back);
+
             }
         }
     }
