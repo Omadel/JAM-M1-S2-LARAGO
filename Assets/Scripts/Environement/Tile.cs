@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class Tile : MonoBehaviour
@@ -52,14 +53,15 @@ public class Tile : MonoBehaviour
                 Vector3[] directions = new Vector3[4] { Vector3.forward, Vector3.back, Vector3.right, Vector3.left };
                 for (int i = 0; i < directions.Length; i++)
                 {
-                    if (Physics.SphereCast(new Ray(OffsettedPosition, directions[i]), size, out RaycastHit tileHit, dist))
+                    if (Physics.Raycast(new Ray(OffsettedPosition, directions[i]), out RaycastHit tileHit, dist))
                     {
                         if (tileHit.collider.GetComponent<Tile>())
                         {
-                            neighbours.Add(tileHit.collider.GetComponent<Tile>(), (Direction)i);
+                            neighbours.SetTile(tileHit.collider.GetComponent<Tile>(), (Direction)i);
                         }
                     }
                 }
+               
             }
         }
     }
@@ -119,9 +121,10 @@ public class TilesNeighbours
         }
 
     }
-    public void Add(Tile tile, Direction dir)
+    public void SetTile(Tile tile, Direction dir)
     {
         tiles[(int)dir] = tile;
+        EditorUtility.SetDirty(tiles[(int)dir]);
     }
     public List<Tile> GetNoNullTiles()
     {

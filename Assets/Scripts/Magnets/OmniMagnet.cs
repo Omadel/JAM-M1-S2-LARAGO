@@ -1,20 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace LaraGoLike
 {
     public class OmniMagnet : MonoBehaviour
     {
-        RaycastHit Lefthit;
-        Ray Leftray; 
-        RaycastHit Righthit;
-        Ray Rightray; 
-        RaycastHit Tophit;
-        Ray Topray; 
-        RaycastHit Backhit;
-        Ray Backray;
-      
+        private RaycastHit Lefthit;
+        private Ray Leftray;
+        private RaycastHit Righthit;
+        private Ray Rightray;
+        private RaycastHit Tophit;
+        private Ray Topray;
+        private RaycastHit Backhit;
+        private Ray Backray;
+
 
         private void Start()
         {
@@ -32,15 +30,15 @@ namespace LaraGoLike
             Debug.DrawRay(transform.position, Vector3.back, Color.red);
 
             int layer_mask = LayerMask.GetMask("Default");
-            if (Physics.Raycast(Leftray,out Lefthit, 1f, layer_mask,QueryTriggerInteraction.Ignore))
+            if (Physics.Raycast(Leftray, out Lefthit, 1f, layer_mask, QueryTriggerInteraction.Ignore))
             {
                 Train.instance.Rotate(Direction.Left);
             }
             if (Physics.Raycast(Rightray, out Righthit, 1f, layer_mask, QueryTriggerInteraction.Ignore))
             {
-             
+
                 Train.instance.Rotate(Direction.Right);
-                
+
             }
             if (Physics.Raycast(Topray, out Tophit, 1f, layer_mask, QueryTriggerInteraction.Ignore))
             {

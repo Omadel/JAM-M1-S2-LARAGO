@@ -26,7 +26,6 @@ public class RessourcesHolder : MonoBehaviour
             {
                 key += "s";
             }
-
                 key += "_" + item.name;
             Objects.Add(key, item);
         }

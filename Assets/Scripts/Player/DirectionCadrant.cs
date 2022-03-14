@@ -19,7 +19,6 @@ public class DirectionCadrant : MonoBehaviour
     void Update()
     {
         Vector2 actualPos = startPoint - mousePosition.action.ReadValue<Vector2>();
-        Debug.Log(dir);
         float radian = Mathf.Atan2(actualPos.x, actualPos.y);
 
         if (radian > Mathf.PI / 4f && radian < (3 * Mathf.PI / 4f))
