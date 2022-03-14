@@ -13,15 +13,16 @@ public abstract class MovableObject : MonoBehaviour
 
     protected void Move(Direction direction)
     {
-        if(isMoving == false)
+        if (isMoving == false)
         {
-            if(currentTile.neighbours.tiles[(int)direction] != null)
+            if (currentTile.neighbours.tiles[(int)direction] != null)
             {
                 isMoving = true;
                 transform.DOMove(currentTile.neighbours.tiles[(int)direction].OffsettedPosition, moveDuration).OnComplete(CompleteMove);
                 currentTile = currentTile.neighbours.tiles[(int)direction];
                 OnMove?.Invoke(true);
-            } else
+            }
+            else
             {
                 OnMove?.Invoke(false);
             }
@@ -30,10 +31,14 @@ public abstract class MovableObject : MonoBehaviour
 
     public void GetCurrentTile()
     {
-        
-        if(Physics.Raycast(new Ray(transform.position + (Vector3.up * 0.5f), Vector3.down), out RaycastHit hit, 1f))
+        Ray ray = new Ray(transform.position + (Vector3.up * .5f), Vector3.down);
+        Debug.DrawRay(ray.origin, ray.direction, Color.black, 10f);
+        if (Physics.Raycast(ray, out RaycastHit hit, 1f))
         {
-            hit.collider.TryGetComponent<Tile>(out currentTile);
+            if (hit.collider.TryGetComponent<Tile>(out currentTile))
+            {
+                Debug.Log("Collide with" + hit.collider.name);
+            }
         }
     }
 
