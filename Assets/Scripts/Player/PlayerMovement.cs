@@ -3,15 +3,15 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(AudioSource))]
 public class PlayerMovement : MovableObject
 {
     public static PlayerMovement instance;
-    void Awake()
+
+    private void Awake()
     {
-        if (PlayerMovement.instance != null)
+        if(PlayerMovement.instance != null)
         {
-            Debug.LogError("This is more than One PlayerMovement");
+            Debug.LogError("There is more than One PlayerMovement");
         }
         PlayerMovement.instance = this;
     }
@@ -21,37 +21,28 @@ public class PlayerMovement : MovableObject
     public InputActionReference mouseClick;
     public InputActionReference mousePos;
     public DirectionCadrant pointer;
-    public Vector2 startPosition = new Vector2();
-    public Vector2 endPosition = Vector2.zero;
-    public AudioClip[] audioClips;
-    
 
-    AudioSource audioSource;
-    bool isNotMovable=false;
-    //public  feedback;
+    private Vector2 startPosition = new Vector2();
+    private Vector2 endPosition = Vector2.zero;
+    private bool isNotMovable = false;
 
     private void OnEnable()
     {
         mouseClick.action.Enable();
         mousePos.action.Enable();
     }
+
     private void Start()
     {
-        audioSource = GetComponent<AudioSource>();
-        GetActualTile();
+        GetCurrentTile();
 
-        mouseClick.action.started += (ctr) =>
-        {
-            StartMoveClick();
-
-        };
-
+        mouseClick.action.started += StartMoveClick;
         mouseClick.action.canceled += CaluculateDirection;
     }
 
-    private void StartMoveClick()
+    private void StartMoveClick(InputAction.CallbackContext obj)
     {
-        if (EventSystem.current.IsPointerOverGameObject(0) || Spawnner.instance.isPuttingMagnet)
+        if(EventSystem.current.IsPointerOverGameObject(0) || Spawnner.instance.isPuttingMagnet)
         {
             isNotMovable = true;
             return;
@@ -64,53 +55,39 @@ public class PlayerMovement : MovableObject
 
     public void CaluculateDirection(InputAction.CallbackContext obj)
     {
-        if (isNotMovable == false)
+        if(isNotMovable == false)
         {
             pointer.gameObject.SetActive(false);
             endPosition = mousePos.action.ReadValue<Vector2>();
-            int i = -1;
 
             Vector2 delta = (endPosition - startPosition).normalized;
 
             float radian = math.atan2(delta.x, delta.y);
 
-            if (radian > Mathf.PI / 4f && radian < (3 * Mathf.PI / 4f))
+            Direction direction = Direction.Forward;
+
+            const float PIQuart = Mathf.PI / 4f;
+
+            if(radian > PIQuart && radian < (3 * PIQuart))
             {
-                dir = 3;
+                direction = Direction.Left;
             }
 
-            if (radian < -Mathf.PI / 4f && radian > (-3 * Mathf.PI / 4f))
+            if(radian < -PIQuart && radian > (-3 * PIQuart))
             {
-                dir = 2;
+                direction = Direction.Right;
             }
 
-            if (Mathf.Abs(radian) > (3 * Mathf.PI / 4f) && Mathf.Abs(radian) < (5 * Mathf.PI / 4f))
+            if(radian > -PIQuart && radian < PIQuart)
             {
-                dir = 0;
+                direction = Direction.Back;
             }
 
-            if (radian > -Mathf.PI / 4f && radian < Mathf.PI / 4f)
-            {
-                dir = 1;
-            }
-            Move(dir);
-        }
-        else
+            Move(direction);
+        } else
         {
             isNotMovable = false;
         }
-    }
-
-    public override void NotSuccesfullMove(int i)
-    {
-        base.NotSuccesfullMove(i);
-        audioSource.PlayOneShot(audioClips[1]);
-
-    }
-    public override void SuccesfullMove(int i)
-    {
-        base.SuccesfullMove(i);
-        audioSource.PlayOneShot(audioClips[0]);
     }
 
 }

@@ -1,47 +1,46 @@
-using UnityEngine;
 using DG.Tweening;
+using UnityEngine;
 
 public abstract class MovableObject : MonoBehaviour
 {
-    public int dir;
-    public Tile actualTile;
-    public float timeMove = 0.2f;
-    public bool onMove = false;
-    public Vector3[] V3Dir = new Vector3[4] { Vector3.forward, Vector3.back, Vector3.right, Vector3.left };
+    protected enum Direction : int { Forward, Back, Right, Left }
 
-    public void Move(int i)
+    public System.Action<bool> OnMove;
+
+    [SerializeField] private float moveDuration = 0.2f;
+
+    public Tile currentTile;
+
+    private bool isMoving = false;
+
+    protected void Move(Direction direction)
     {
-        if (onMove == false)
+        if(isMoving == false)
         {
-            if (actualTile.neighbours.tiles[i] != null)
+            if(currentTile.neighbours.tiles[(int)direction] != null)
             {
-                SuccesfullMove(i);
-            }
-            else
+                isMoving = true;
+                transform.DOMove(currentTile.neighbours.tiles[(int)direction].OffsettedPosition, moveDuration).OnComplete(CompleteMove);
+                currentTile = currentTile.neighbours.tiles[(int)direction];
+                OnMove?.Invoke(true);
+            } else
             {
-                NotSuccesfullMove(i);
-            }
-        }
-    }
-    public void GetActualTile()
-    {
-        if (Physics.SphereCast(new Ray(transform.position + (Vector3.up * 0.5f), Vector3.down), 0.2f, out RaycastHit hit, 0.75f))
-        {
-            if (hit.collider.GetComponent<Tile>())
-            {
-                actualTile = hit.collider.GetComponent<Tile>();
+                OnMove?.Invoke(false);
             }
         }
     }
 
-    public virtual void SuccesfullMove(int i)
+    public void GetCurrentTile()
     {
-        onMove = true;
-        transform.DOMove(actualTile.neighbours.tiles[i].OffsettedPosition, timeMove).OnComplete(() => { onMove = false; });
-        actualTile = actualTile.neighbours.tiles[i];
+        if(Physics.Raycast(new Ray(transform.position + (Vector3.up * 0.5f), Vector3.down), out RaycastHit hit, 1f))
+        {
+            hit.collider.TryGetComponent<Tile>(out currentTile);
+        }
     }
-    public virtual void NotSuccesfullMove(int i)
+
+    protected void CompleteMove()
     {
+        isMoving = false;
     }
 }
 
