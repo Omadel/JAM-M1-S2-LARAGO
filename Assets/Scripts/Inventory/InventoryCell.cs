@@ -13,7 +13,6 @@ public class InventoryCell : MonoBehaviour
         string key="s_";
         key+=magnetIn.magnet.ToString();
         key += "Magnet";
-        Debug.Log(key);
         var ressource = RessourcesHolder.GetRessources(key);
         magnetsImage.sprite = ressource as Sprite;
         numberLeft = magnetIn.number;

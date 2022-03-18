@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-[DefaultExecutionOrder(-1)]
+[DefaultExecutionOrder(-1)] 
 public class RessourcesHolder : MonoBehaviour
 {
 
@@ -28,7 +28,6 @@ public class RessourcesHolder : MonoBehaviour
             }
             key += "_" + item.name;
             Objects.Add(key, item);
-            Debug.Log(key);
         }
     }
     public static Object GetRessources(ObjectKey name)
