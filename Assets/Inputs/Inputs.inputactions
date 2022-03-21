@@ -25,23 +25,12 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "e7a5a310-4cfb-4765-be2c-b91e231824da",
-                    "path": "<Mouse>/leftButton",
+                    "id": "e0864b67-899c-4dfa-9aa6-e3da3d4e2f8f",
+                    "path": "<Touchscreen>/primaryTouch/position",
                     "interactions": "",
                     "processors": "",
                     "groups": "Android",
-                    "action": "Click",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "345e8320-cb4d-4a48-b176-a9cb51fc5bc9",
-                    "path": "<Touchscreen>/primaryTouch/tap",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Click",
+                    "action": "mousePos",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -58,12 +47,23 @@
                 },
                 {
                     "name": "",
-                    "id": "e0864b67-899c-4dfa-9aa6-e3da3d4e2f8f",
-                    "path": "<Touchscreen>/primaryTouch/position",
+                    "id": "345e8320-cb4d-4a48-b176-a9cb51fc5bc9",
+                    "path": "<Touchscreen>/primaryTouch/press",
                     "interactions": "",
                     "processors": "",
                     "groups": "Android",
-                    "action": "mousePos",
+                    "action": "Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e7a5a310-4cfb-4765-be2c-b91e231824da",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Android",
+                    "action": "Click",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

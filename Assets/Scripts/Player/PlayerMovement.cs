@@ -42,7 +42,7 @@ public class PlayerMovement : MovableObject
 
     private void StartMoveClick(InputAction.CallbackContext obj)
     {
-        if(EventSystem.current.IsPointerOverGameObject(0) || Spawnner.instance.isPuttingMagnet)
+        if(InventoryDisplay.instance.HitInventory(mousePos.action.ReadValue<Vector2>()) || Spawnner.instance.isPuttingMagnet)
         {
             isNotMovable = true;
             return;
