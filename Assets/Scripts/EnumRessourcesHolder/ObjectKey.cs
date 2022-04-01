@@ -5,4 +5,6 @@ go_OmniMagnet,
 s_ForwardMagnet,
 s_OmniMagnet,
 s_BackMagnet,
+s_RightMagnet,
+s_LeftMagnet,
 }

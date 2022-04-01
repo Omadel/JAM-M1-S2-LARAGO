@@ -21,6 +21,7 @@ public class Tile : MonoBehaviour
             }
         }
     }
+
     public virtual void ExecuteEnterCode(){
 
 

@@ -6,6 +6,7 @@ namespace LaraGoLike
 {
     public class Train : MovableObject
     {
+        
         public static Train instance;
 
         private Direction currentDirection; 
