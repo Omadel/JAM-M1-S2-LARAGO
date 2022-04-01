@@ -33,11 +33,17 @@ namespace LaraGoLike
                 _timer = 0;
                 Move(currentDirection);
             }
+            Debug.Log(currentDirection);
         }
 
         public void Rotate(Direction direction)
         {
             currentDirection = direction;
+        }
+
+        public Direction GetDirection()
+        {
+            return currentDirection;
         }
     }
 }

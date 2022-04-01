@@ -16,7 +16,9 @@ namespace LaraGoLike
 
         private void Start()
         {
-            firstRay = new Ray(transform.position,directions[(int)firstDirection]);  
+            firstRay = new Ray(transform.position,directions[(int)firstDirection]);
+            direction = firstDirection;
+            SetDeathDirection(direction);
         }
 
         private void FixedUpdate()
@@ -26,6 +28,7 @@ namespace LaraGoLike
             {
                 _timer = 0;
                 Alternate();
+                SetDeathDirection(direction);
             }
         }
 
