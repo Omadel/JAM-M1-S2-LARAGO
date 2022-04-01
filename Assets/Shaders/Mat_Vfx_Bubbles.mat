@@ -7,22 +7,22 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: New Material 1
-  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
+  m_Name: Mat_Vfx_Bubbles
+  m_Shader: {fileID: -6465566751694194690, guid: 630eef1bbef948747b43d6f986122ec9,
+    type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2000
-  stringTagMap:
-    RenderType: Opaque
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: 4397c9ab50b2cd341a40fd817f1f8902, type: 3}
-        m_Scale: {x: 5, y: 5}
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
         m_Texture: {fileID: 0}
@@ -45,8 +45,8 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 4397c9ab50b2cd341a40fd817f1f8902, type: 3}
-        m_Scale: {x: 5, y: 5}
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}
@@ -77,6 +77,17 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - Vector1_0d80187d47cd4b7c81c0feab339bbac4: -4.71
+    - Vector1_1: -22.86
+    - Vector1_125cba3063d94294acb2656a902184c9: 0
+    - Vector1_341e5389358245258230401f4d6a99f1: 3.06
+    - Vector1_3b916e5f297a40ba9a51b00eaf95fe25: 7.7
+    - Vector1_507a8c84287148e1a49e5e4c651fb10a: 4.01
+    - Vector1_c76f2b5632484cec83eb884e34b36652: 2.02
+    - Vector1_d541a0162a414d78b3a7c382fe78ebb1: 15.24
+    - Vector1_dbd40f3803274fd982144b624525017a: 1.25
+    - Vector1_df8e008e1a814baeb2203362fa66a8c5: -4.81
+    - Vector1_ea1fd5e6b7294bdf884a47c616c986cd: 0.37
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -104,12 +115,14 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 1, g: 0.6039216, b: 0, a: 1}
+    - Vector3_1: {r: 0.07, g: 0.07, b: 4.45, a: 0}
+    - Vector3_353f3c2673754e6082409b226b67c767: {r: 0.2, g: 0.2, b: 18.92, a: 0}
+    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
---- !u!114 &7478095215853096419
+--- !u!114 &1533081926840889286
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

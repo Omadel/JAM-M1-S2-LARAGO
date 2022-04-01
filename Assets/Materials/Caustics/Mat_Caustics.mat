@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shader Graphs_Shader_Caustics
+  m_Name: Mat_Caustics
   m_Shader: {fileID: -6465566751694194690, guid: 3ed7b098d40b9ca46b4b7520904bb952,
     type: 3}
   m_ShaderKeywords: 
@@ -41,14 +41,14 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_0cf5440de1b84e6fa43d885dd678c550: 1
-    - Vector1_0ea31deb6ad8491bb492c4a7b68ad4f9: 0.35
+    - Vector1_0cf5440de1b84e6fa43d885dd678c550: 0.351
+    - Vector1_0ea31deb6ad8491bb492c4a7b68ad4f9: -0.52
     - Vector1_1064f5f32d384a3b88e12792da1ab44d: 2.2
     - Vector1_29f608c870b740cda22b8742344acbce: 2.23
     - Vector1_3f967a6d849d41009cf76a865a0feff3: 0.034
-    - Vector1_5b00fc6fcf84430c8c4c772365134edd: 100
+    - Vector1_5b00fc6fcf84430c8c4c772365134edd: 180
     - Vector1_5c409d7e86f2489e853037fb6b4ac112: 8.47
-    - Vector1_77bcaa83a17c4f2b80a1c19af66f3458: 2.6
+    - Vector1_77bcaa83a17c4f2b80a1c19af66f3458: 3
     - Vector1_d189eed1c7394144bccc6271f7129fc6: 0.2
     - Vector1_f10a7b95aa6e40b8a501703dbe6fcf4b: 2.11
     - Vector1_f96db8eb6d7e4e68b4cf94eaade7d93a: -0.51
