@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Magnet : MonoBehaviour
 {
-  
+    [Header("Direction For UniMagnet")]
     public Direction direction;
     Direction DeathDirection = Direction.Forward;
     Ray ray;

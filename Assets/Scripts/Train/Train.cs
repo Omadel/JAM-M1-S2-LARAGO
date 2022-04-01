@@ -7,16 +7,18 @@ namespace LaraGoLike
 {
     public class Train : MovableObject
     {
-        
         public static Train instance;
+        
+        [Header("First Train Direction")]
         public Direction TrainFirstDir;
+        
+        [Header("Player Steps Before Train Move")]
         public int StepBeforMove;
 
         private int _compt = 0;
-        
-        private Direction currentDirection; 
-
+        private Direction currentDirection;
         float _timer;
+        
         void Awake()
         {
             if (Train.instance != null)
