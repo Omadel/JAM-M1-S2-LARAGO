@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,8 +7,13 @@ namespace LaraGoLike
 {
     public class Train : MovableObject
     {
+        
         public static Train instance;
+        public Direction TrainFirstDir;
+        public int StepBeforMove;
 
+        private int _compt = 0;
+        
         private Direction currentDirection; 
 
         float _timer;
@@ -20,29 +26,27 @@ namespace LaraGoLike
             Train.instance = this;
         }
 
-        private void Start()
+        public void Start()
         {
             PlayerMovement.instance.OnMove += MoveDir;
             GetCurrentTile();
+            currentDirection = TrainFirstDir;
         }
 
         private void MoveDir(bool isMoving, Vector3 arg2)
         {
-            if (isMoving == true)
+            if (_compt <= StepBeforMove-1)
             {
-                Move(currentDirection);
+                _compt++;
+            }
+            else
+            {
+                if (isMoving == true)
+                {
+                    Move(currentDirection);
+                }
             }
         }
-        //private void Update()
-        //{
-        //    _timer += Time.deltaTime;
-        //    if (_timer > 1)
-        //    {
-        //        _timer = 0;
-        //        Move(currentDirection);
-        //    }
-        //    Debug.Log(currentDirection);
-        //}
 
         public void Rotate(Direction direction)
         {
@@ -52,6 +56,11 @@ namespace LaraGoLike
         public Direction GetDirection()
         {
             return currentDirection;
+        }
+
+        public void SetDirection(Direction dir)
+        {
+            currentDirection = dir;
         }
     }
 }

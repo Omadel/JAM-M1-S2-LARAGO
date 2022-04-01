@@ -7,9 +7,7 @@ public abstract class MovableObject : MonoBehaviour
     public System.Action<bool,Vector3> OnMove;
 
     [SerializeField] private float moveDuration = 0.2f;
-
     public Tile currentTile;
-
     private bool isMoving = false;
     Vector3 currentVectorDirection;
 
@@ -26,6 +24,7 @@ public abstract class MovableObject : MonoBehaviour
                 currentTile = currentTile.neighbours.tiles[(int)direction];
                 currentTile.ExecuteEnterCode();
                 currentVectorDirection = transform.position.Direction(endPosition);
+                
                 OnMove?.Invoke(true,currentVectorDirection);
             }
             else
