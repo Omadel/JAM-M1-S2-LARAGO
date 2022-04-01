@@ -1,31 +1,67 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
+using DG.Tweening;
 
-namespace LaraGoLike
+public class Bridge : Activable
 {
-    public class Bridge : Activable
+    [SerializeField]
+    private bool isActivOnBase;
+    [SerializeField]
+    private GameObject CellBridge;
+
+    private void Start()
     {
-        [SerializeField]
-        bool isActivOnBase;
-        [SerializeField]
-        GameObject CellBridge;
-        void Start()
+        if (!isActivOnBase)
         {
-            CellBridge.SetActive(isActivOnBase);
+            CellBridge.transform.DOMoveY(-1f, Time.deltaTime*2f).SetEase(Ease.Linear).OnComplete(() => { StartCoroutine(LaunchExecute()); });
         }
-        public override void Activate(bool isEntering)
+        else
         {
-            Debug.Log("Bridge");
-            if(isEntering)
+            ExecuteAllCubeFindNeighbours.ExecuteOrder66();
+        }
+    }
+    public override void Activate(bool isEntering)
+    {
+        if (isEntering)
+        {
+
+            if (!isActivOnBase)
             {
-                CellBridge.SetActive(!isActivOnBase);
+                Debug.Log("Bridge down1");
+                Move(false);
             }
             else
             {
-                CellBridge.SetActive(isActivOnBase);
+                Debug.Log("Bridge up1");
+                Move(true);
             }
-            ExecuteAllCubeFindNeighbours.ExecuteOrder66();
-        } 
+        }
+        else
+        {
+            if (isActivOnBase)
+            {
+                Debug.Log("Bridge up2");
+                Move(false);
+            }
+            else
+            {
+                Debug.Log("Bridge down2");
+                Move(true);
+            }
+        }
+    }
+    void Move(bool down)
+    {
+        if (down)
+            CellBridge.transform.DOMoveY(-1f, 0.5f).SetEase(Ease.Linear).OnComplete(() => { StartCoroutine(LaunchExecute()); });
+        else
+            CellBridge.transform.DOMoveY(0f, 0.5f).SetEase(Ease.Linear).OnComplete(()=> { StartCoroutine(LaunchExecute()); });
+    }    
+    
+    IEnumerator LaunchExecute()
+    {
+        yield return new WaitForEndOfFrame();
+        ExecuteAllCubeFindNeighbours.ExecuteOrder66();
     }
 }
+

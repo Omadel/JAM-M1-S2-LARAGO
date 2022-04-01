@@ -6,7 +6,6 @@ using DG.Tweening;
 public class PressurePlate : NoneSpawnnableTile
 {
     System.Action<bool> OnEnterPlate;
-
     public List<Activable> activable = new List<Activable>();
     [SerializeField] GameObject mesh;
     [SerializeField] float downOffset=0.46f;
