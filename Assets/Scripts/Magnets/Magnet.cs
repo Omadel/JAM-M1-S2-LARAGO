@@ -4,22 +4,24 @@ using UnityEngine;
 
 public class Magnet : MonoBehaviour
 {
+    [Header("Direction For UniMagnet")]
     public Direction direction;
-
+    Direction DeathDirection = Direction.Forward;
     Ray ray;
     [SerializeField]
     LayerMask layer_mask;
-    // Start is called before the first frame update
+    
+    
     void Start()
     {
         CheckDirection();
+        SetDeathDirection(direction);
     }
     public void  SetDir(Direction dir)
     {
         direction = dir;
         CheckDirection();
     }
-
 
     private void CheckDirection()
     {
@@ -42,17 +44,43 @@ public class Magnet : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetDeathDirection(Direction currentDirection)
     {
-        
-        Debug.DrawRay(transform.position, ray.direction, Color.red);
-        if (Physics.Raycast(ray, out RaycastHit hit, 1f, layer_mask, QueryTriggerInteraction.Ignore))
+        switch (currentDirection)
         {
-            if(hit.collider!=null&&hit.collider.gameObject.TryGetComponent<Train>(out Train train))
-                train.Rotate(direction);
+            case Direction.Forward:
+                DeathDirection = Direction.Back;
+                break;
+            case Direction.Back:
+                DeathDirection = Direction.Forward;
+                break;
+            case Direction.Right:
+                DeathDirection = Direction.Left;
+                break;
+            case Direction.Left:
+                DeathDirection = Direction.Right;
+                break;
+            default:
+                break;
         }
     }
 
+    void Update()
+    {
+        if (Physics.Raycast(ray, out RaycastHit hit, 1.1f, layer_mask, QueryTriggerInteraction.Ignore))
+        {
+            if (hit.collider != null && hit.collider.gameObject.TryGetComponent<Train>(out Train train))
+            {
+                if (train.GetDirection() == DeathDirection )
+                {
+                    Destroy(train.gameObject);
+                }
+                else
+                {
+                    train.Rotate(direction);
+                }
+            }
+        }
+    }
 }
 

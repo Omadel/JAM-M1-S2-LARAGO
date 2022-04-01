@@ -11,5 +11,6 @@ public class ExecuteAllCubeFindNeighbours : MonoBehaviour
         {
             item.FindNeighbours();
         }
+        Debug.Log("test");
     }
 }

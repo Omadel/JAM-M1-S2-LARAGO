@@ -1,3 +1,4 @@
+using System;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -17,11 +18,9 @@ public class PlayerMovement : MovableObject
     }
 
 
-
     public InputActionReference mouseClick;
     public InputActionReference mousePos;
     public DirectionCadrant pointer;
-
     private Vector2 startPosition = new Vector2();
     private Vector2 endPosition = Vector2.zero;
     private bool isNotMovable = false;
@@ -38,6 +37,7 @@ public class PlayerMovement : MovableObject
 
         mouseClick.action.started += StartMoveClick;
         mouseClick.action.canceled += CaluculateDirection;
+
     }
 
     private void StartMoveClick(InputAction.CallbackContext obj)

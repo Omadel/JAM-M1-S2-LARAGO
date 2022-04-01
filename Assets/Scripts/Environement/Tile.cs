@@ -21,6 +21,7 @@ public class Tile : MonoBehaviour
             }
         }
     }
+
     public virtual void ExecuteEnterCode(){
 
 
@@ -33,8 +34,9 @@ public class Tile : MonoBehaviour
     {
 
 
-        if (Physics.SphereCast(new Ray(transform.position, Vector3.up), 0.2f, out RaycastHit hit, 0.75f))
+        if (Physics.SphereCast(new Ray(transform.position, Vector3.up), 0.25f, out RaycastHit hit, 0.2f))
         {
+            
             if (hit.collider.GetComponent<Tile>() || hit.collider.GetComponent<Magnet>())
             {
                 CheckNeighbours(this);
@@ -61,7 +63,7 @@ public class Tile : MonoBehaviour
                 Vector3[] directions = new Vector3[4] { Vector3.forward, Vector3.back, Vector3.right, Vector3.left };
                 for (int i = 0; i < directions.Length; i++)
                 {
-                    if (Physics.Raycast(new Ray(OffsettedPosition, directions[i]), out RaycastHit tileHit, dist))
+                    if (Physics.Raycast(new Ray(transform.position, directions[i]), out RaycastHit tileHit, dist))
                     {
                         if (tileHit.collider.GetComponent<Tile>())
                         {
