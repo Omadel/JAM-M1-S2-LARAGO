@@ -22,19 +22,27 @@ namespace LaraGoLike
 
         private void Start()
         {
+            PlayerMovement.instance.OnMove += MoveDir;
             GetCurrentTile();
         }
 
-        private void Update()
+        private void MoveDir(bool isMoving, Vector3 arg2)
         {
-            _timer += Time.deltaTime;
-            if (_timer > 1)
+            if (isMoving == true)
             {
-                _timer = 0;
                 Move(currentDirection);
             }
-            Debug.Log(currentDirection);
         }
+        //private void Update()
+        //{
+        //    _timer += Time.deltaTime;
+        //    if (_timer > 1)
+        //    {
+        //        _timer = 0;
+        //        Move(currentDirection);
+        //    }
+        //    Debug.Log(currentDirection);
+        //}
 
         public void Rotate(Direction direction)
         {

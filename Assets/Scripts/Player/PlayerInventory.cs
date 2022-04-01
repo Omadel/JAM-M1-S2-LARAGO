@@ -13,6 +13,7 @@ namespace LaraGoLike
             inventory.Initiate(magnetsList);
             
         }
+        
 
     }
 }

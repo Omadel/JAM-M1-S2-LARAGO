@@ -5,6 +5,9 @@ using UnityEngine.InputSystem;
 public class Spawnner : MonoBehaviour
 {
     public static Spawnner instance;
+    public Material redMat;
+    Material[] tilesMaterial = new Material[4];
+    Tile[] tempList;
     void Awake()
     {
         if (Spawnner.instance != null)
@@ -23,10 +26,13 @@ public class Spawnner : MonoBehaviour
     {
         transform.position = tile.OffsettedPosition;
         cell=_cell;
-        foreach (var item in tile.neighbours.GetPossableTiles())
+       
+        Tile[] tempList = tile.neighbours.GetPossableTiles().ToArray();
+        for (int i = 0; i < tempList.Length; i++)
         {
-            item.GetComponent<MeshRenderer>().material.color = Color.red;
-            tiles.Add(item);
+            tilesMaterial[i] = tempList[i].GetComponent<MeshRenderer>().material;
+            tempList[i].GetComponent<MeshRenderer>().material=redMat;
+            tiles.Add(tempList[i]);
         }
         isPuttingMagnet = true;
         PlayerMovement.instance.mouseClick.action.started += TestClick;
@@ -44,10 +50,23 @@ public class Spawnner : MonoBehaviour
                 }
             }
             isPuttingMagnet = false;
-            foreach (var item in tiles)
+            for (int i = 0; i < tiles.Count; i++)
             {
-                item.GetComponent<MeshRenderer>().material.color = Color.white;
+
+                tiles[i].GetComponent<MeshRenderer>().material=tilesMaterial[i];
             }
+            tiles.Clear();
+            cell = null;
+        }
+        else
+        {
+            isPuttingMagnet = false;
+            for (int i = 0; i < tiles.Count; i++)
+            {
+
+                tiles[i].GetComponent<MeshRenderer>().material = tilesMaterial[i];
+            }
+
             tiles.Clear();
             cell = null;
         }
@@ -65,7 +84,7 @@ public class Spawnner : MonoBehaviour
         {
             magnet.GetComponent<Magnet>().SetDir((Direction)((int)magType - 1));
         }
-        magnet.transform.position =tile.OffsettedPosition;
+        magnet.transform.position =tile.OffsettedPosition+new Vector3(0,0.5f,0);
         cell.ReduceNumber();
         Destroy(tile);
     }

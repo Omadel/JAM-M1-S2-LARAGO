@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,6 +9,7 @@ public class InventoryCell : MonoBehaviour
     public TMPro.TextMeshProUGUI magnetsNumber;
     MagnetType magType;
     int numberLeft;
+
     public void SetUp(MagnetInInventory magnetIn)
     {
         string key="s_";
