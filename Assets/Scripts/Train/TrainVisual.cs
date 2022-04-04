@@ -65,12 +65,11 @@ namespace LaraGoLike
                 {
                     renderer.mesh = straightWagon;
                 }
+                wagon.GetComponent<TrainPart>().OnMove();
+                
             }
             wagons[wagons.Count - 1].forward = wagons[wagons.Count - 2].position - wagons[wagons.Count - 1].position;
-            foreach (var item in GetComponentsInChildren<TrainPart>())
-            {
-                item.OnMove();
-            } 
+          
         }
     }
 }
