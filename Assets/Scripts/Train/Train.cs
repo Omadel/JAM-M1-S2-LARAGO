@@ -28,7 +28,12 @@ using UnityEngine;
             Train.instance = this;
         }
 
-        public void Start()
+    protected override void Move(Direction direction)
+    {
+        base.Move(direction);
+        transform.GetComponentInChildren<TrainPart>().OnMove(direction);
+    }
+    public void Start()
         {
             PlayerMovement.instance.OnMove += MoveDir;
             GetCurrentTile();
