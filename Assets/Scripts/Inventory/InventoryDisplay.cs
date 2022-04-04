@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -16,6 +17,11 @@ public class InventoryDisplay : MonoBehaviour
     }
     
     public GameObject content;
+
+    private void OnDestroy()
+    {
+        InventoryDisplay.instance = null;
+    }
 
     public void Initiate(InventoryLevel levelInventory)
     {

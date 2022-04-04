@@ -49,6 +49,13 @@ public class PlayerMovement : MovableObject
 
     }
 
+    private void OnDestroy()
+    {
+        PlayerMovement.instance = null;
+        mouseClick.action.started -= StartMoveClick;
+        mouseClick.action.canceled -= CaluculateDirection;
+    }
+
     private void StartMoveClick(InputAction.CallbackContext obj)
     {
         if(InventoryDisplay.instance.HitInventory(mousePos.action.ReadValue<Vector2>()) || Spawnner.instance.isPuttingMagnet)
