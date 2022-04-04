@@ -10,6 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1a660a26715b1f74ba61321c7a0111ce, type: 3}
-  m_Name: Level0
+  m_Name: Level02
   m_EditorClassIdentifier: 
-  magnets: []
+  magnets:
+  - magnet: 2
+    number: 1
+  - magnet: 3
+    number: 1
