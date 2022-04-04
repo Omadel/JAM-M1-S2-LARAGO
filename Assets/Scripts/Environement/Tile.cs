@@ -83,11 +83,11 @@ public class Tile : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawSphere(offset + transform.position, 0.2f);
     }
     private void OnDrawGizmosSelected()
     {
 
+        Gizmos.DrawSphere(offset + transform.position, 0.2f);
         foreach (Tile item in neighbours.GetPossableTiles())
         {
             Debug.DrawLine(transform.position + offset, item.transform.position + item.offset, Color.red);

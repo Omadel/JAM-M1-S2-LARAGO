@@ -70,19 +70,17 @@ public class Magnet : MonoBehaviour
 
     void Update()
     {
-        if (Physics.Raycast(ray, out RaycastHit hit, 1.1f, layer_mask, QueryTriggerInteraction.Ignore))
+        if (!Physics.Raycast(ray, out RaycastHit hit, 1.1f, layer_mask, QueryTriggerInteraction.Collide)) return;
+        if (hit.collider.isTrigger)
         {
-            if (hit.collider != null && hit.collider.gameObject.TryGetComponent<Train>(out Train train))
+            if (Train.instance.GetDirection() == DeathDirection )
             {
-                if (train.GetDirection() == DeathDirection )
-                {
-                    UIManager.Instance.LooseTrainUI();
-                    Destroy(train.gameObject);
-                }
-                else
-                {
-                    train.Rotate(direction);
-                }
+                UIManager.Instance.LooseTrainUI();
+                Destroy(Train.instance.gameObject);
+            }
+            else
+            {
+                Train.instance.Rotate(direction);
             }
         }
     }
