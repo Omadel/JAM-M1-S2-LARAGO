@@ -28,7 +28,8 @@ using UnityEngine;
             Train.instance = this;
         }
 
-        public void Start()
+
+    public void Start()
         {
             PlayerMovement.instance.OnMove += MoveDir;
             GetCurrentTile();
@@ -50,7 +51,15 @@ using UnityEngine;
             }
         }
 
-        
+        private void OnCollisionEnter(Collision collision)
+        {
+            PlayerMovement player;
+            if (collision.gameObject.TryGetComponent<PlayerMovement>(out player))
+            {
+                UIManager.Instance.LoosePlayerUI();
+                Destroy(collision.gameObject);
+            }
+        }
 
         public void Rotate(Direction direction)
         {

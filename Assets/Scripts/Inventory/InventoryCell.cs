@@ -5,11 +5,23 @@ using UnityEngine.UI;
 
 public class InventoryCell : MonoBehaviour
 {
+    System.Action OnPressPlate;
+
     public Image magnetsImage;
     public TMPro.TextMeshProUGUI magnetsNumber;
     MagnetType magType;
     int numberLeft;
+    public Etienne.Feedback.GameEvent feebackPressed;
 
+    private void Start()
+    {
+        OnPressPlate +=PlayFeedback;
+    }
+    private void PlayFeedback() {
+        if(!feebackPressed)
+            return;
+        StartCoroutine(feebackPressed.Execute(magnetsImage.gameObject));
+    }
     public void SetUp(MagnetInInventory magnetIn)
     {
         string key="s_";
@@ -37,6 +49,7 @@ public class InventoryCell : MonoBehaviour
     {
         if(numberLeft<=0)
         {
+            OnPressPlate.Invoke();
             magnetsImage.color=new Color(0.5f,0.5f,0.5f);
             GetComponent<Button>().interactable = false;
         }

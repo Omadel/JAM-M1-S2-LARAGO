@@ -11,7 +11,7 @@ public abstract class MovableObject : MonoBehaviour
     private bool isMoving = false;
     Vector3 currentVectorDirection;
 
-    protected void Move(Direction direction)
+    protected virtual void Move(Direction direction)
     {
         if (isMoving == false)
         {

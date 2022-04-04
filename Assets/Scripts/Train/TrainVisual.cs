@@ -1,6 +1,8 @@
 using Etienne;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace LaraGoLike
 {
@@ -11,7 +13,7 @@ namespace LaraGoLike
         [SerializeField] private GameObject locomotivePrefab, straightWagonPrefab, lastWagonPrefab;
         [SerializeField] private Mesh straightWagon, turnWagon;
         [SerializeField] private List<Transform> wagons = new List<Transform>();
-        private void Start()
+        private async void Start()
         {
             GameObject trainParent = new GameObject("TrainVisual");
             trainParent.transform.SetPositionAndRotation(transform.position, transform.rotation);
@@ -32,6 +34,8 @@ namespace LaraGoLike
             go.AddComponent<BoxCollider>().isTrigger = true;
             wagons.Add(go.transform);
             GetComponent<Train>().OnMove += Move;
+            await Task.Delay(100);
+            SceneManager.MoveGameObjectToScene(trainParent,SceneManager.GetActiveScene());
         }
 
         private void Move(bool sucess, Vector3 direction)
@@ -65,8 +69,11 @@ namespace LaraGoLike
                 {
                     renderer.mesh = straightWagon;
                 }
+                wagon.GetComponent<TrainPart>().OnMove();
+                
             }
             wagons[wagons.Count - 1].forward = wagons[wagons.Count - 2].position - wagons[wagons.Count - 1].position;
+          
         }
     }
 }

@@ -31,7 +31,6 @@ MonoBehaviour:
             priority: 128
             volume: 1
             pitch: 1
-            loop: 0
             stereoPan: 0
             spacialBlend: 0
             minDistance: 1

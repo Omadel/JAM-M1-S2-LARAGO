@@ -168,6 +168,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   magnetsImage: {fileID: 5690328219565164781}
   magnetsNumber: {fileID: 8881041139988445367}
+  feebackPressed: {fileID: 11400000, guid: 10c203aae8f22044cb6093d7206481dd, type: 2}
 --- !u!114 &7050678347967517169
 MonoBehaviour:
   m_ObjectHideFlags: 0
