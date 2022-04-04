@@ -18,7 +18,7 @@ public class Magnet : MonoBehaviour
     {
         CheckDirection();
         SetDeathDirection(direction);
-        
+        transform.GetChild(0).localRotation=Quaternion.Euler(0,rotation[(int)direction],0);
     }
     public void  SetDir(Direction dir)
     {
