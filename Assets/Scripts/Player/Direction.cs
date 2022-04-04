@@ -1,1 +1,1 @@
-﻿public enum Direction : int { Forward, Back, Right, Left }
+﻿public enum Direction : int { Up, Down, Right, Left }

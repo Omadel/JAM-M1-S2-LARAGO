@@ -7,7 +7,7 @@ public class Magnet : MonoBehaviour
     [Header("Direction For UniMagnet")]
     public Direction direction;
     
-    Direction DeathDirection = Direction.Forward;
+    Direction DeathDirection = Direction.Up;
     Ray ray;
     [SerializeField]
     LayerMask layer_mask;
@@ -30,10 +30,10 @@ public class Magnet : MonoBehaviour
     {
         switch (direction)
         {
-            case Direction.Forward:
+            case Direction.Up:
                 ray = new Ray(transform.position, Vector3.forward);
                 break;
-            case Direction.Back:
+            case Direction.Down:
                 ray = new Ray(transform.position, Vector3.back);
                 break;
             case Direction.Right:
@@ -51,11 +51,11 @@ public class Magnet : MonoBehaviour
     {
         switch (currentDirection)
         {
-            case Direction.Forward:
-                DeathDirection = Direction.Back;
+            case Direction.Up:
+                DeathDirection = Direction.Down;
                 break;
-            case Direction.Back:
-                DeathDirection = Direction.Forward;
+            case Direction.Down:
+                DeathDirection = Direction.Up;
                 break;
             case Direction.Right:
                 DeathDirection = Direction.Left;

@@ -48,7 +48,7 @@ public class AlternMagnet : Magnet
         //    PlayerMovement.instance.OnMove += AlternPlate;
         //}
 
-        if(firstDirection == Direction.Forward || secondDirection == Direction.Forward)
+        if(firstDirection == Direction.Up || secondDirection == Direction.Up)
         {
             transform.GetChild(0).transform.localScale = new Vector3(transform.GetChild(0).transform.localScale.x, transform.GetChild(0).transform.localScale.y,-1);
 
@@ -57,7 +57,7 @@ public class AlternMagnet : Magnet
         {
             transform.GetChild(0).transform.localScale = new Vector3(-1, transform.GetChild(0).transform.localScale.y, transform.GetChild(0).transform.localScale.z);
         }
-        if(firstDirection==Direction.Back|| firstDirection == Direction.Forward)
+        if(firstDirection==Direction.Down|| firstDirection == Direction.Up)
         {
            
             animator.SetTrigger("Back");

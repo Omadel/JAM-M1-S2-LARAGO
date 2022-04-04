@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Level1
   m_EditorClassIdentifier: 
   magnets:
-  - magnet: 0
-    number: 1
-  - magnet: 3
+  - magnet: 4
+    number: 2
+  - magnet: 1
     number: 1
