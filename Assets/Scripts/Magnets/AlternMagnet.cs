@@ -17,6 +17,8 @@ public class AlternMagnet : Magnet
     private float _timer;
     private bool IsFirst;
     Animator animator;
+    public GameObject DownFx;
+    public GameObject RigthFx;
     private void Start()
     {
         animator = transform.GetChild(0).GetComponent<Animator>();
@@ -57,13 +59,16 @@ public class AlternMagnet : Magnet
         {
             transform.GetChild(0).transform.localScale = new Vector3(-1, transform.GetChild(0).transform.localScale.y, transform.GetChild(0).transform.localScale.z);
         }
-        if(firstDirection==Direction.Down|| firstDirection == Direction.Up)
+        if (firstDirection == Direction.Down || firstDirection == Direction.Up)
         {
-           
+            RigthFx.SetActive(false);
             animator.SetTrigger("Back");
         }
         else
+        {
+            DownFx.SetActive(false);
             animator.SetTrigger("Right");
+        }
 
 
     }
@@ -108,13 +113,18 @@ public class AlternMagnet : Magnet
                 {
                     animator.SetTrigger("Switch");
                     animator.SetTrigger("Right");
+                    DownFx.SetActive(false);
+                    RigthFx.SetActive(true);
 
                 }
                 else
                 {
                     animator.SetTrigger("Switch");
                     animator.SetTrigger("Back");
+                    DownFx.SetActive(true);
+                    RigthFx.SetActive(false);
                 }
+
                 IsFirst = false;
             }
             else
@@ -124,12 +134,16 @@ public class AlternMagnet : Magnet
                 {
                     animator.SetTrigger("Switch");
                     animator.SetTrigger("Right");
-
+                    DownFx.SetActive(false);
+                    RigthFx.SetActive(true);
                 }
                 else
                 {
                     animator.SetTrigger("Switch");
                     animator.SetTrigger("Back");
+                    DownFx.SetActive(true);
+                    RigthFx.SetActive(false);
+
                 }
                 IsFirst = true;
             }

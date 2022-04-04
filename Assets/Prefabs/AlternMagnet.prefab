@@ -136,6 +136,8 @@ MonoBehaviour:
   secondDirection: 2
   Duration: 2
   isPlayer: 0
+  DownFx: {fileID: 3403645306164649668}
+  RigthFx: {fileID: 7026611260925152108}
 --- !u!1 &3403645306164649668
 GameObject:
   m_ObjectHideFlags: 0
