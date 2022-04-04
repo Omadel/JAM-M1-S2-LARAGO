@@ -10,8 +10,9 @@ public class Magnet : MonoBehaviour
     Ray ray;
     [SerializeField]
     LayerMask layer_mask;
-    
-    
+    int[] rotation = new int[] { 180, 0, -90, 90 };
+
+
     void Start()
     {
         CheckDirection();

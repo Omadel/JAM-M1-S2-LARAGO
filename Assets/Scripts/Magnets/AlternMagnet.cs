@@ -15,9 +15,10 @@ public class AlternMagnet : Magnet
     private Vector3[] directions = new Vector3[4] { Vector3.forward, Vector3.back, Vector3.right, Vector3.left };
     private float _timer;
     private bool IsFirst;
-
+    Animator animator;
     private void Start()
     {
+        animator = transform.GetChild(0).GetComponent<Animator>();
         firstRay = new Ray(transform.position, directions[(int)firstDirection]);
         direction = firstDirection;
         SetDeathDirection(direction);
@@ -45,17 +46,39 @@ public class AlternMagnet : Magnet
         //{
         //    PlayerMovement.instance.OnMove += AlternPlate;
         //}
+
+        if(firstDirection == Direction.Forward || secondDirection == Direction.Forward)
+        {
+            transform.GetChild(0).transform.localScale = new Vector3(transform.GetChild(0).transform.localScale.x, transform.GetChild(0).transform.localScale.y,-1);
+
+        }
+        if(firstDirection==Direction.Left||secondDirection==Direction.Left)
+        {
+            transform.GetChild(0).transform.localScale = new Vector3(-1, transform.GetChild(0).transform.localScale.y, transform.GetChild(0).transform.localScale.z);
+        }
+        if(firstDirection==Direction.Back|| firstDirection == Direction.Forward)
+        {
+           
+            animator.SetTrigger("Back");
+        }
+        else
+            animator.SetTrigger("Right");
+
+
     }
+
     public void SwitchDir(bool fistDir)
     {
         Debug.Log("isWorking");
         if (fistDir)
         {
             SetDir(secondDirection);
+           
         }
         else
         {
             SetDir(firstDirection);
+
         }
     }
     private void AlternPlate(bool arg1, Vector3 arg2)
@@ -78,12 +101,35 @@ public class AlternMagnet : Magnet
         {
             if (IsFirst)
             {
+
                 SetDir(firstDirection);
+                if (firstDirection == Direction.Left || firstDirection == Direction.Right)
+                {
+                    animator.SetTrigger("Switch");
+                    animator.SetTrigger("Right");
+
+                }
+                else
+                {
+                    animator.SetTrigger("Switch");
+                    animator.SetTrigger("Back");
+                }
                 IsFirst = false;
             }
             else
             {
                 SetDir(secondDirection);
+                if (secondDirection == Direction.Left || secondDirection == Direction.Right)
+                {
+                    animator.SetTrigger("Switch");
+                    animator.SetTrigger("Right");
+
+                }
+                else
+                {
+                    animator.SetTrigger("Switch");
+                    animator.SetTrigger("Back");
+                }
                 IsFirst = true;
             }
         }

@@ -497,7 +497,7 @@ PrefabInstance:
     - target: {fileID: 7489997084043563535, guid: 718910dd5c29ee140bb21c89a54e942e,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.00001335144
+      value: 0.000007987022
       objectReference: {fileID: 0}
     - target: {fileID: 7489997084052304853, guid: 718910dd5c29ee140bb21c89a54e942e,
         type: 3}
@@ -1083,6 +1083,11 @@ PrefabInstance:
       propertyPath: redMat
       value: 
       objectReference: {fileID: 2100000, guid: 39a3aefcee11c6c4a83271cb4a1d6296, type: 2}
+    - target: {fileID: 4173503776760264072, guid: 9439b70a8cce7b747bafc11bd519c8e2,
+        type: 3}
+      propertyPath: layer.m_Bits
+      value: 115
+      objectReference: {fileID: 0}
     - target: {fileID: 4173503776760264073, guid: 9439b70a8cce7b747bafc11bd519c8e2,
         type: 3}
       propertyPath: m_Name
