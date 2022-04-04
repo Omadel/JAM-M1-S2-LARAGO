@@ -3,8 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace LaraGoLike
-{
     public class Train : MovableObject
     {
         public static Train instance;
@@ -14,6 +12,8 @@ namespace LaraGoLike
         
         [Header("Player Steps Before Train Move")]
         public int StepBeforMove;
+
+
 
         private int _compt = 0;
         private Direction currentDirection;
@@ -50,6 +50,16 @@ namespace LaraGoLike
             }
         }
 
+        private void OnCollisionEnter(Collision collision)
+        {
+            PlayerMovement player;
+            if (collision.gameObject.TryGetComponent<PlayerMovement>(out player))
+            {
+                UIManager.Instance.LoosePlayerUI();
+                Destroy(collision.gameObject);
+            }
+        }
+
         public void Rotate(Direction direction)
         {
             currentDirection = direction;
@@ -65,4 +75,3 @@ namespace LaraGoLike
             currentDirection = dir;
         }
     }
-}

@@ -24,7 +24,6 @@ public abstract class MovableObject : MonoBehaviour
                 currentTile = currentTile.neighbours.tiles[(int)direction];
                 currentTile.ExecuteEnterCode();
                 currentVectorDirection = transform.position.Direction(endPosition);
-                
                 OnMove?.Invoke(true,currentVectorDirection);
             }
             else
