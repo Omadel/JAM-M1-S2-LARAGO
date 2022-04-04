@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MovableObject
 {
     public static PlayerMovement instance;
+    public Etienne.Feedback.GameEvent feebackMove;
 
     private void Awake()
     {
@@ -15,8 +16,13 @@ public class PlayerMovement : MovableObject
             Debug.LogError("There is more than One PlayerMovement");
         }
         PlayerMovement.instance = this;
+        OnMove += PlayFeedback;
     }
-    
+
+    private void PlayFeedback(bool arg1, Vector3 arg2) {
+        StartCoroutine(feebackMove.Execute(gameObject));
+        ;
+    }
 
     public InputActionReference mouseClick;
     public InputActionReference mousePos;
