@@ -4,11 +4,14 @@ using UnityEngine.InputSystem;
 
 public class Spawnner : MonoBehaviour
 {
+    System.Action<GameObject> OnSpawnMagnet;
     public static Spawnner instance;
     public Material redMat;
     private Material[] tilesMaterial = new Material[4];
     private Tile[] tempList;
     public LayerMask layer;
+    public Etienne.Feedback.GameEvent feebackSpawnMagnet;
+
 
     private void Awake()
     {
@@ -17,13 +20,18 @@ public class Spawnner : MonoBehaviour
             Debug.LogError("This is more than One Spawnner");
         }
         Spawnner.instance = this;
+        OnSpawnMagnet += PlayFeedback;
     }
 
     public bool isPuttingMagnet = false;
     private List<Tile> tiles = new List<Tile>();
     public InventoryCell cell;
     public MagnetType magType;
-
+    private void PlayFeedback(GameObject go)
+    {
+        StartCoroutine(feebackSpawnMagnet.Execute(go));
+        ;
+    }
     public void SetPositions(Tile tile, MagnetType type, InventoryCell _cell)
     {
         transform.position = tile.OffsettedPosition;
@@ -86,6 +94,7 @@ public class Spawnner : MonoBehaviour
         string key = "go_" + magSpec + "Magnet";
         Object ressource = RessourcesHolder.GetRessources(key);
         GameObject magnet = Instantiate(ressource as GameObject);
+        OnSpawnMagnet.Invoke(magnet);
 
         if (magType != MagnetType.Omni)
         {

@@ -1,14 +1,17 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using LaraGoLike;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UIManager : Etienne.Singleton<UIManager>
 {
     public GameObject NextLevelButton;
     public GameObject LevelSelection;
+    public GameObject Buttons;
     
     TextMeshProUGUI _EndGameText;
 
@@ -41,6 +44,7 @@ public class UIManager : Etienne.Singleton<UIManager>
     {
         this.gameObject.SetActive(true);
         NextLevelButton.SetActive(true);
+        LevelSelection.SetActive(false);
         _EndGameText.text = "You win !";
     }
     
@@ -51,17 +55,24 @@ public class UIManager : Etienne.Singleton<UIManager>
 
     public void NextLevel()
     {
-        
+        int currentScene = SceneManager.GetActiveScene().buildIndex;
+        Save.HasPlayed = true;
+        Save.SetLevelCompleted(currentScene);
+        LevelLoader.Instance.UnloadLevels(currentScene).LoadLevels(currentScene + 1).StartLoading();
+        DOTween.KillAll();
     }
     
     public void Menu()
     {
+        Buttons.SetActive(false);
         LevelSelection.SetActive(true);
     }
     
     public void Retry()
     {
-        
+        int currentScene = SceneManager.GetActiveScene().buildIndex;
+        LevelLoader.Instance.UnloadLevels(currentScene).LoadLevels(currentScene).StartLoading();
+        DOTween.KillAll();
     }
     
     public void QuitGame()

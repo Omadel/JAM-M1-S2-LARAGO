@@ -10,7 +10,17 @@ public class PressurePlate : NoneSpawnnableTile
     public List<AlternMagnet> magnets;
     [SerializeField] GameObject mesh;
     [SerializeField] float downOffset=0.46f;
+    public Etienne.Feedback.GameEvent feebackPressed;
 
+    private void PlayFeedback(bool arg1)
+    {
+        StartCoroutine(feebackPressed.Execute(mesh));
+        ;
+    }
+    private void Awake()
+    {
+        OnEnterPlate += PlayFeedback;
+    }
     void Start()
     {
         Debug.Log("TakePressurePlateAvtivable");
