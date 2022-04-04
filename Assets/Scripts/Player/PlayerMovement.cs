@@ -16,7 +16,7 @@ public class PlayerMovement : MovableObject
         }
         PlayerMovement.instance = this;
     }
-
+    
 
     public InputActionReference mouseClick;
     public InputActionReference mousePos;

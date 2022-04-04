@@ -11,6 +11,7 @@ public class AlternMagnet : Magnet
     [Header("SwapBePlayer")]
     public bool isPlayer;
     
+    
     private Ray firstRay;
     private Vector3[] directions = new Vector3[4] { Vector3.forward, Vector3.back, Vector3.right, Vector3.left };
     private float _timer;

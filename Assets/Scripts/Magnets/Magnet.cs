@@ -6,6 +6,7 @@ public class Magnet : MonoBehaviour
 {
     [Header("Direction For UniMagnet")]
     public Direction direction;
+    
     Direction DeathDirection = Direction.Forward;
     Ray ray;
     [SerializeField]
@@ -16,6 +17,7 @@ public class Magnet : MonoBehaviour
     {
         CheckDirection();
         SetDeathDirection(direction);
+        
     }
     public void  SetDir(Direction dir)
     {
@@ -73,6 +75,7 @@ public class Magnet : MonoBehaviour
             {
                 if (train.GetDirection() == DeathDirection )
                 {
+                    UIManager.Instance.LooseTrainUI();
                     Destroy(train.gameObject);
                 }
                 else
