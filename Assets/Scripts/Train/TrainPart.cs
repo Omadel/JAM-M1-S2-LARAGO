@@ -1,13 +1,13 @@
 public class TrainPart : MovableObject
 {
-    public void OnMove(Direction direction)
+    public void OnMove()
     {
-        if (currentTile.neighbours.tiles[(int)direction] != null)
-        {
+
+        if(currentTile!=null)
             currentTile.ExecuteExitCode();
-            currentTile = currentTile.neighbours.tiles[(int)direction];
+            GetCurrentTile();
+        if (currentTile != null)
             currentTile.ExecuteEnterCode();
-        }
 
     }
 }

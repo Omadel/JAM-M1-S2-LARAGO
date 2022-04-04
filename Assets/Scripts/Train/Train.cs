@@ -28,11 +28,7 @@ using UnityEngine;
             Train.instance = this;
         }
 
-    protected override void Move(Direction direction)
-    {
-        base.Move(direction);
-        transform.GetComponentInChildren<TrainPart>().OnMove(direction);
-    }
+
     public void Start()
         {
             PlayerMovement.instance.OnMove += MoveDir;
@@ -55,7 +51,15 @@ using UnityEngine;
             }
         }
 
-        
+        private void OnCollisionEnter(Collision collision)
+        {
+            PlayerMovement player;
+            if (collision.gameObject.TryGetComponent<PlayerMovement>(out player))
+            {
+                UIManager.Instance.LoosePlayerUI();
+                Destroy(collision.gameObject);
+            }
+        }
 
         public void Rotate(Direction direction)
         {
