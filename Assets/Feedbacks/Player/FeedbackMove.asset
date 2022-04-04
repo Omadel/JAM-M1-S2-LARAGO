@@ -27,6 +27,6 @@ MonoBehaviour:
         duration: 0.5
         loops: 0
         loopType: 0
-        _Punch: {x: 1, y: 1, z: 1}
+        _Punch: {x: 0.2, y: 0.2, z: 0.2}
         _Vibrato: 10
         _Elasticity: 1
