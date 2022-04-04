@@ -3,19 +3,20 @@
 namespace LaraGoLike
 {
     [AddComponentMenu("Menu/MainMenu")]
-    class MainMenu : MonoBehaviour
+    internal class MainMenu : MonoBehaviour
     {
         public System.Action OnStart, OnSelectLevel, OnQuit;
 
-        [SerializeField] private BetterButton startButton, selectLevelButton,quitButton;
+        [SerializeField] private BetterButton startButton, selectLevelButton, quitButton;
 
         private void Awake()
         {
-            startButton.OnClick += () => OnStart?.Invoke() ;
+            startButton.OnClick += () => OnStart?.Invoke();
+            startButton.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = Save.HasPlayed ? "Continue" : "Start";
             selectLevelButton.OnClick += () => OnSelectLevel?.Invoke();
             quitButton.OnClick += () => OnQuit?.Invoke();
 
-           selectLevelButton.gameObject.SetActive(Save.HasPlayed);
+            selectLevelButton.gameObject.SetActive(Save.HasPlayed);
         }
     }
 }

@@ -14,8 +14,7 @@ public class InventoryDisplay : MonoBehaviour
         }
         InventoryDisplay.instance = this;
     }
-
-
+    
     public GameObject content;
 
     public void Initiate(InventoryLevel levelInventory)

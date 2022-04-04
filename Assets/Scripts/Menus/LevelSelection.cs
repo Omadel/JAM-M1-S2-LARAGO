@@ -11,10 +11,16 @@ namespace LaraGoLike
         private void Awake()
         {
             EditorBuildSettingsScene[] scenes = EditorBuildSettings.scenes;
+            int lastLevel = Save.GetLastLevelCompleted();
             for(int i = (int)Scene.MainMenu + 1; i < scenes.Length; i++)
             {
+                int index = i - (int)Scene.MainMenu + 1;
+
                 GameObject go = GameObject.Instantiate(levelButtonPrefab, levelButtonParent);
-                go.GetComponent<LevelButton>().Init(i - (int)Scene.MainMenu+1);
+                LevelButton button = go.GetComponent<LevelButton>();
+                button.Init(index);
+                Debug.Log(index);
+                button.GetComponent<BetterButton>().interactable = index <= lastLevel+1;
             }
         }
     }
