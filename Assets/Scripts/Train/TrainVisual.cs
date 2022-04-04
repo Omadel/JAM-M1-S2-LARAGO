@@ -16,17 +16,20 @@ namespace LaraGoLike
             GameObject trainParent = new GameObject("TrainVisual");
             trainParent.transform.SetPositionAndRotation(transform.position, transform.rotation);
             GameObject go = GameObject.Instantiate(locomotivePrefab, trainParent.transform);
+            go.AddComponent<BoxCollider>().isTrigger = true;
             wagons.Add(go.transform);
 
             for(int i = 1; i < size; i++)
             {
                 go = GameObject.Instantiate(straightWagonPrefab, trainParent.transform);
+                go.AddComponent<BoxCollider>().isTrigger = true;
                 go.transform.position -= transform.forward * i;
                 wagons.Add(go.transform);
             }
 
             go = GameObject.Instantiate(lastWagonPrefab, trainParent.transform);
             go.transform.position -= transform.forward * size;
+            go.AddComponent<BoxCollider>().isTrigger = true;
             wagons.Add(go.transform);
             GetComponent<Train>().OnMove += Move;
         }

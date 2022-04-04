@@ -55,15 +55,7 @@ using UnityEngine;
             }
         }
 
-        private void OnCollisionEnter(Collision collision)
-        {
-            PlayerMovement player;
-            if (collision.gameObject.TryGetComponent<PlayerMovement>(out player))
-            {
-                UIManager.Instance.LoosePlayerUI();
-                Destroy(collision.gameObject);
-            }
-        }
+        
 
         public void Rotate(Direction direction)
         {

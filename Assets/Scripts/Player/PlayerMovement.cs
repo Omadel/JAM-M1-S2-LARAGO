@@ -21,6 +21,9 @@ public class PlayerMovement : MovableObject
     public InputActionReference mouseClick;
     public InputActionReference mousePos;
     public DirectionCadrant pointer;
+
+    [SerializeField] private LayerMask TrainLayer;
+    
     private Vector2 startPosition = new Vector2();
     private Vector2 endPosition = Vector2.zero;
     private bool isNotMovable = false;
@@ -88,5 +91,12 @@ public class PlayerMovement : MovableObject
             isNotMovable = false;
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        UIManager.Instance.LooseTrainUI();
+    }
+
+    
 
 }

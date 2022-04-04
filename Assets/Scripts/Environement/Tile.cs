@@ -58,7 +58,7 @@ public class Tile : MonoBehaviour
         {
             if (item != this)
             {
-                float size = 0.2f;
+                //float size = 0.2f;
                 float dist = 0.75f;
                 Vector3[] directions = new Vector3[4] { Vector3.forward, Vector3.back, Vector3.right, Vector3.left };
                 for (int i = 0; i < directions.Length; i++)
@@ -83,11 +83,11 @@ public class Tile : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawSphere(offset + transform.position, 0.2f);
     }
     private void OnDrawGizmosSelected()
     {
 
+        Gizmos.DrawSphere(offset + transform.position, 0.2f);
         foreach (Tile item in neighbours.GetPossableTiles())
         {
             Debug.DrawLine(transform.position + offset, item.transform.position + item.offset, Color.red);

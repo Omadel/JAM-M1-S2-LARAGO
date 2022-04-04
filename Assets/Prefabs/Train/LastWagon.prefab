@@ -67,5 +67,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LastWagon
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ea7875fd15488b34a8f87f90443beffd,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea7875fd15488b34a8f87f90443beffd, type: 3}

@@ -61,6 +61,7 @@ public class Bridge : Activable
     IEnumerator LaunchExecute()
     {
         yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
         ExecuteAllCubeFindNeighbours.ExecuteOrder66();
     }
 }

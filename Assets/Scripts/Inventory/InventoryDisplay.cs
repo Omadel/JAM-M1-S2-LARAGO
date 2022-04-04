@@ -27,8 +27,7 @@ public class InventoryDisplay : MonoBehaviour
         foreach (MagnetInInventory item in levelInventory.magnets)
         {
             var ressource = RessourcesHolder.GetRessources(ObjectKey.go_InventoryCell);
-            GameObject instance = Instantiate(ressource as GameObject);
-            instance.transform.parent = content.transform;
+            GameObject instance = Instantiate(ressource as GameObject, content.transform, true);
             instance.GetComponent<RectTransform>().localScale = Vector3.one;
             instance.GetComponent<RectTransform>().localRotation = Quaternion.Euler(0, 0, 0);
             instance.GetComponent<InventoryCell>().SetUp(item);
