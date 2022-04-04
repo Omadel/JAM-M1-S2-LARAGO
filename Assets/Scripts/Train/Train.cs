@@ -28,7 +28,8 @@ using UnityEngine;
             Train.instance = this;
         }
 
-        public void Start()
+
+    public void Start()
         {
             PlayerMovement.instance.OnMove += MoveDir;
             GetCurrentTile();

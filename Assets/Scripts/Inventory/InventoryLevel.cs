@@ -17,8 +17,8 @@ public struct MagnetInInventory
 public enum MagnetType
 {
     Omni,
-    Forward,
-    Back,
+    Up,
+    Down,
     Right,
     Left
 }

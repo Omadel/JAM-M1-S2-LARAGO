@@ -11,7 +11,7 @@ public abstract class MovableObject : MonoBehaviour
     private bool isMoving = false;
     Vector3 currentVectorDirection;
 
-    protected void Move(Direction direction)
+    protected virtual void Move(Direction direction)
     {
         if (isMoving == false)
         {
@@ -37,10 +37,9 @@ public abstract class MovableObject : MonoBehaviour
     {
         Ray ray = new Ray(transform.position + (Vector3.up * .5f), Vector3.down);
         Debug.DrawRay(ray.origin, ray.direction, Color.black, 10f);
-        if (Physics.Raycast(ray, out RaycastHit hit, 1f))
-        {
-            if (hit.collider.TryGetComponent<Tile>(out currentTile)) { };
-        }
+        if (!Physics.Raycast(ray, out RaycastHit hit, 1f, LayerMask.GetMask("Default"), QueryTriggerInteraction.Ignore)) return;
+        Debug.DrawLine(ray.origin, hit.point, Color.green, 10f);
+        if (hit.collider.TryGetComponent<Tile>(out currentTile)) { };
     }
 
     protected void CompleteMove()

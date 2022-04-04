@@ -16,9 +16,12 @@ public class AlternMagnet : Magnet
     private Vector3[] directions = new Vector3[4] { Vector3.forward, Vector3.back, Vector3.right, Vector3.left };
     private float _timer;
     private bool IsFirst;
-
+    Animator animator;
+    public GameObject DownFx;
+    public GameObject RigthFx;
     private void Start()
     {
+        animator = transform.GetChild(0).GetComponent<Animator>();
         firstRay = new Ray(transform.position, directions[(int)firstDirection]);
         direction = firstDirection;
         SetDeathDirection(direction);
@@ -46,17 +49,42 @@ public class AlternMagnet : Magnet
         //{
         //    PlayerMovement.instance.OnMove += AlternPlate;
         //}
+
+        if(firstDirection == Direction.Up || secondDirection == Direction.Up)
+        {
+            transform.GetChild(0).transform.localScale = new Vector3(transform.GetChild(0).transform.localScale.x, transform.GetChild(0).transform.localScale.y,-1);
+
+        }
+        if(firstDirection==Direction.Left||secondDirection==Direction.Left)
+        {
+            transform.GetChild(0).transform.localScale = new Vector3(-1, transform.GetChild(0).transform.localScale.y, transform.GetChild(0).transform.localScale.z);
+        }
+        if (firstDirection == Direction.Down || firstDirection == Direction.Up)
+        {
+            RigthFx.SetActive(false);
+            animator.SetTrigger("Back");
+        }
+        else
+        {
+            DownFx.SetActive(false);
+            animator.SetTrigger("Right");
+        }
+
+
     }
+
     public void SwitchDir(bool fistDir)
     {
         Debug.Log("isWorking");
         if (fistDir)
         {
             SetDir(secondDirection);
+           
         }
         else
         {
             SetDir(firstDirection);
+
         }
     }
     private void AlternPlate(bool arg1, Vector3 arg2)
@@ -79,12 +107,44 @@ public class AlternMagnet : Magnet
         {
             if (IsFirst)
             {
+
                 SetDir(firstDirection);
+                if (firstDirection == Direction.Left || firstDirection == Direction.Right)
+                {
+                    animator.SetTrigger("Switch");
+                    animator.SetTrigger("Right");
+                    DownFx.SetActive(false);
+                    RigthFx.SetActive(true);
+
+                }
+                else
+                {
+                    animator.SetTrigger("Switch");
+                    animator.SetTrigger("Back");
+                    DownFx.SetActive(true);
+                    RigthFx.SetActive(false);
+                }
+
                 IsFirst = false;
             }
             else
             {
                 SetDir(secondDirection);
+                if (secondDirection == Direction.Left || secondDirection == Direction.Right)
+                {
+                    animator.SetTrigger("Switch");
+                    animator.SetTrigger("Right");
+                    DownFx.SetActive(false);
+                    RigthFx.SetActive(true);
+                }
+                else
+                {
+                    animator.SetTrigger("Switch");
+                    animator.SetTrigger("Back");
+                    DownFx.SetActive(true);
+                    RigthFx.SetActive(false);
+
+                }
                 IsFirst = true;
             }
         }

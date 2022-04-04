@@ -109,9 +109,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff6ef4df4e8876b4985cf35fef36647e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  neighbours:
+    tiles:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+  offset: {x: 0, y: 0.5, z: 0}
   layer_mask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 65
 --- !u!114 &5467062610451889487
 MonoBehaviour:
   m_ObjectHideFlags: 0

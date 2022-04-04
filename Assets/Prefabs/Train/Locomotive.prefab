@@ -65,7 +65,12 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: fce52c30d150ff9489e73c48d2688932,
         type: 3}
       propertyPath: m_Name
-      value: SM_TrainFront
+      value: Locomotive
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fce52c30d150ff9489e73c48d2688932,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fce52c30d150ff9489e73c48d2688932, type: 3}

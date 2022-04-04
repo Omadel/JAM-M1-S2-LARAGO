@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MovableObject
 {
     public static PlayerMovement instance;
+    public Etienne.Feedback.GameEvent feebackMove;
 
     private void Awake()
     {
@@ -15,12 +16,20 @@ public class PlayerMovement : MovableObject
             Debug.LogError("There is more than One PlayerMovement");
         }
         PlayerMovement.instance = this;
+        OnMove += PlayFeedback;
     }
-    
+
+    private void PlayFeedback(bool arg1, Vector3 arg2) {
+        StartCoroutine(feebackMove.Execute(gameObject));
+        ;
+    }
 
     public InputActionReference mouseClick;
     public InputActionReference mousePos;
     public DirectionCadrant pointer;
+
+    [SerializeField] private LayerMask TrainLayer;
+    
     private Vector2 startPosition = new Vector2();
     private Vector2 endPosition = Vector2.zero;
     private bool isNotMovable = false;
@@ -38,6 +47,13 @@ public class PlayerMovement : MovableObject
         mouseClick.action.started += StartMoveClick;
         mouseClick.action.canceled += CaluculateDirection;
 
+    }
+
+    private void OnDestroy()
+    {
+        PlayerMovement.instance = null;
+        mouseClick.action.started -= StartMoveClick;
+        mouseClick.action.canceled -= CaluculateDirection;
     }
 
     private void StartMoveClick(InputAction.CallbackContext obj)
@@ -64,7 +80,7 @@ public class PlayerMovement : MovableObject
 
             float radian = math.atan2(delta.x, delta.y);
 
-            Direction direction = Direction.Forward;
+            Direction direction = Direction.Up;
             const float PIQuart = Mathf.PI / 4f;
 
             if(radian > PIQuart && radian < (3 * PIQuart))
@@ -79,7 +95,7 @@ public class PlayerMovement : MovableObject
 
             if(radian > -PIQuart && radian < PIQuart)
             {
-                direction = Direction.Back;
+                direction = Direction.Down;
             }
 
             Move(direction);
@@ -88,5 +104,12 @@ public class PlayerMovement : MovableObject
             isNotMovable = false;
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        UIManager.Instance.LooseTrainUI();
+    }
+
+    
 
 }
