@@ -58,7 +58,7 @@ public class Tile : MonoBehaviour
         {
             if (item != this)
             {
-                float size = 0.2f;
+                //float size = 0.2f;
                 float dist = 0.75f;
                 Vector3[] directions = new Vector3[4] { Vector3.forward, Vector3.back, Vector3.right, Vector3.left };
                 for (int i = 0; i < directions.Length; i++)
