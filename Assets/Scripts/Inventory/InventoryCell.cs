@@ -13,14 +13,14 @@ public class InventoryCell : MonoBehaviour
     int numberLeft;
     public Etienne.Feedback.GameEvent feebackPressed;
 
-    private void Awake()
+    private void Start()
     {
         OnPressPlate +=PlayFeedback;
     }
-    private void PlayFeedback()
-    {
+    private void PlayFeedback() {
+        if(!feebackPressed)
+            return;
         StartCoroutine(feebackPressed.Execute(magnetsImage.gameObject));
-        ;
     }
     public void SetUp(MagnetInInventory magnetIn)
     {

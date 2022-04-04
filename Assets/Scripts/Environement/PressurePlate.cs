@@ -15,12 +15,8 @@ public class PressurePlate : NoneSpawnnableTile
     private void PlayFeedback(bool arg1)
     {
         StartCoroutine(feebackPressed.Execute(mesh));
-        ;
     }
-    private void Awake()
-    {
-        OnEnterPlate += PlayFeedback;
-    }
+
     void Start()
     {
         Debug.Log("TakePressurePlateAvtivable");
@@ -34,6 +30,7 @@ public class PressurePlate : NoneSpawnnableTile
             OnEnterPlate += item.SwitchDir;
         }
 
+        OnEnterPlate += PlayFeedback;
     }
     public override void ExecuteEnterCode()
     {

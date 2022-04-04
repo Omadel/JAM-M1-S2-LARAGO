@@ -13,7 +13,7 @@ public class Spawnner : MonoBehaviour
     public Etienne.Feedback.GameEvent feebackSpawnMagnet;
 
 
-    private void Awake()
+    private void Start()
     {
         if (Spawnner.instance != null)
         {
@@ -29,8 +29,9 @@ public class Spawnner : MonoBehaviour
     public MagnetType magType;
     private void PlayFeedback(GameObject go)
     {
+        if(!feebackSpawnMagnet)
+            return;
         StartCoroutine(feebackSpawnMagnet.Execute(go));
-        ;
     }
     public void SetPositions(Tile tile, MagnetType type, InventoryCell _cell)
     {

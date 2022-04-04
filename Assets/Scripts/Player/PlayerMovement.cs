@@ -20,8 +20,9 @@ public class PlayerMovement : MovableObject
     }
 
     private void PlayFeedback(bool arg1, Vector3 arg2) {
-        StartCoroutine(feebackMove.Execute(gameObject));
-        ;
+        if(!feebackMove)
+            return;
+        StartCoroutine(feebackMove?.Execute(gameObject));
     }
 
     public InputActionReference mouseClick;

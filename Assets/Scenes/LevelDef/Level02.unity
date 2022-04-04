@@ -1175,6 +1175,17 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 0.000034332275
       objectReference: {fileID: 0}
+    - target: {fileID: 5323419972400746461, guid: e229bb0b20df0f745ac133a6af2c7e47,
+        type: 3}
+      propertyPath: feebackMove
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5323419972650736806, guid: e229bb0b20df0f745ac133a6af2c7e47,
+        type: 3}
+      propertyPath: feebackSpawnMagnet
+      value: 
+      objectReference: {fileID: 11400000, guid: 10c203aae8f22044cb6093d7206481dd,
+        type: 2}
     - target: {fileID: 5323419972656624451, guid: e229bb0b20df0f745ac133a6af2c7e47,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1246,6 +1257,11 @@ PrefabInstance:
     - target: {fileID: 1568621893990437920, guid: 6b799a0d4f45bcb4c8d07e8f4808234c,
         type: 3}
       propertyPath: StepBeforMove
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1568621893990437920, guid: 6b799a0d4f45bcb4c8d07e8f4808234c,
+        type: 3}
+      propertyPath: TrainFirstDir
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1568621893990437921, guid: 6b799a0d4f45bcb4c8d07e8f4808234c,
