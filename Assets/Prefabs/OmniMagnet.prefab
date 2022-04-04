@@ -111,7 +111,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   layer_mask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 65
 --- !u!95 &2133831079654876429
 Animator:
   serializedVersion: 3

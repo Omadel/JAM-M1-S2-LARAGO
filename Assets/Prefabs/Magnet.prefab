@@ -131,7 +131,7 @@ MonoBehaviour:
   direction: 0
   layer_mask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 65
 --- !u!1001 &5492895414689887192
 PrefabInstance:
   m_ObjectHideFlags: 0

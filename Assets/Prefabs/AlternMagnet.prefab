@@ -131,7 +131,7 @@ MonoBehaviour:
   direction: 0
   layer_mask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 65
   firstDirection: 0
   secondDirection: 2
   Duration: 2
