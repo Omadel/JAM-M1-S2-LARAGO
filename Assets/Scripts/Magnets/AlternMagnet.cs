@@ -10,8 +10,8 @@ public class AlternMagnet : Magnet
     public int Duration = 1;
     [Header("SwapBePlayer")]
     public bool isPlayer;
-    
-    
+
+
     private Ray firstRay;
     private Vector3[] directions = new Vector3[4] { Vector3.forward, Vector3.back, Vector3.right, Vector3.left };
     private float _timer;
@@ -41,7 +41,7 @@ public class AlternMagnet : Magnet
 
     public void Alternate()
     {
-        if (isPlayer==true)
+        if (isPlayer == true)
         {
             PlayerMovement.instance.OnMove += AlternPlayer;
         }
@@ -50,12 +50,12 @@ public class AlternMagnet : Magnet
         //    PlayerMovement.instance.OnMove += AlternPlate;
         //}
 
-        if(firstDirection == Direction.Down || secondDirection == Direction.Down)
+        if (firstDirection == Direction.Down || secondDirection == Direction.Down)
         {
-            transform.GetChild(0).transform.localScale = new Vector3(transform.GetChild(0).transform.localScale.x, transform.GetChild(0).transform.localScale.y,-1);
+            transform.GetChild(0).transform.localScale = new Vector3(transform.GetChild(0).transform.localScale.x, transform.GetChild(0).transform.localScale.y, -1);
 
         }
-        if(firstDirection==Direction.Right||secondDirection==Direction.Right)
+        if (firstDirection == Direction.Right || secondDirection == Direction.Right)
         {
             transform.GetChild(0).transform.localScale = new Vector3(-1, transform.GetChild(0).transform.localScale.y, transform.GetChild(0).transform.localScale.z);
         }
@@ -75,17 +75,49 @@ public class AlternMagnet : Magnet
 
     public void SwitchDir(bool fistDir)
     {
-        Debug.Log("isWorking");
-        if (fistDir)
+        if (IsFirst)
         {
-            SetDir(secondDirection);
-           
+
+            SetDir(firstDirection);
+            if (firstDirection == Direction.Left || firstDirection == Direction.Right)
+            {
+                animator.SetTrigger("Switch");
+                animator.SetTrigger("Right");
+                DownFx.SetActive(false);
+                RigthFx.SetActive(true);
+
+            }
+            else
+            {
+                animator.SetTrigger("Switch");
+                animator.SetTrigger("Back");
+                DownFx.SetActive(true);
+                RigthFx.SetActive(false);
+            }
+
+            IsFirst = false;
         }
         else
         {
-            SetDir(firstDirection);
+            SetDir(secondDirection);
+            if (secondDirection == Direction.Left || secondDirection == Direction.Right)
+            {
+                animator.SetTrigger("Switch");
+                animator.SetTrigger("Right");
+                DownFx.SetActive(false);
+                RigthFx.SetActive(true);
+            }
+            else
+            {
+                animator.SetTrigger("Switch");
+                animator.SetTrigger("Back");
+                DownFx.SetActive(true);
+                RigthFx.SetActive(false);
 
+            }
+            IsFirst = true;
         }
+
     }
     private void AlternPlate(bool arg1, Vector3 arg2)
     {
