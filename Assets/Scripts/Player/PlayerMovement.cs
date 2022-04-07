@@ -44,13 +44,12 @@ public class PlayerMovement : MovableObject
     private void Start()
     {
         GetCurrentTile();
-
         mouseClick.action.started += StartMoveClick;
         mouseClick.action.canceled += CaluculateDirection;
 
     }
 
-    private void OnDestroy()
+    public void OnDestroy()
     {
         PlayerMovement.instance = null;
         mouseClick.action.started -= StartMoveClick;

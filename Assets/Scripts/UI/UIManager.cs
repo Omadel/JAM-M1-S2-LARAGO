@@ -29,21 +29,26 @@ public class UIManager : Etienne.Singleton<UIManager>
 
     public void LooseTrainUI()
     {
+        PlayerMovement.instance.OnDestroy();
         this.gameObject.SetActive(true);
+        NextLevelButton.SetActive(false);
+        LevelSelection.SetActive(false);
         _EndGameText.text = "Your train hit something !";
     }
 
     public void LoosePlayerUI()
     {
+        PlayerMovement.instance.OnDestroy();
         this.gameObject.SetActive(true);
         NextLevelButton.SetActive(false);
+        LevelSelection.SetActive(false);
         _EndGameText.text = "Your player hit something !";
     }
 
     public void WinUI()
     {
         this.gameObject.SetActive(true);
-        NextLevelButton.SetActive(true);
+        
         LevelSelection.SetActive(false);
         _EndGameText.text = "You win !";
     }

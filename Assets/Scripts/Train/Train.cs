@@ -12,8 +12,7 @@ using UnityEngine;
         
         [Header("Player Steps Before Train Move")]
         public int StepBeforMove;
-
-
+        
 
         private int _compt = 0;
         private Direction currentDirection;
@@ -29,7 +28,7 @@ using UnityEngine;
         }
 
 
-    public void Start()
+        public void Start()
         {
             PlayerMovement.instance.OnMove += MoveDir;
             GetCurrentTile();
@@ -38,15 +37,22 @@ using UnityEngine;
 
         private void MoveDir(bool isMoving, Vector3 arg2)
         {
+            if (isMoving == false) return;
+            
             if (_compt <= StepBeforMove-1)
             {
                 _compt++;
             }
             else
             {
-                if (isMoving == true)
+                
+                if (currentTile.neighbours.tiles[(int)currentDirection] != null)
                 {
                     Move(currentDirection);
+                }
+                else
+                {
+                    UIManager.Instance.LoosePlayerUI();
                 }
             }
         }
