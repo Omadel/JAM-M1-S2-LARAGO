@@ -50,12 +50,12 @@ public class AlternMagnet : Magnet
         //    PlayerMovement.instance.OnMove += AlternPlate;
         //}
 
-        if(firstDirection == Direction.Up || secondDirection == Direction.Up)
+        if(firstDirection == Direction.Down || secondDirection == Direction.Down)
         {
             transform.GetChild(0).transform.localScale = new Vector3(transform.GetChild(0).transform.localScale.x, transform.GetChild(0).transform.localScale.y,-1);
 
         }
-        if(firstDirection==Direction.Left||secondDirection==Direction.Left)
+        if(firstDirection==Direction.Right||secondDirection==Direction.Right)
         {
             transform.GetChild(0).transform.localScale = new Vector3(-1, transform.GetChild(0).transform.localScale.y, transform.GetChild(0).transform.localScale.z);
         }

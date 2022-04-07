@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.17545885, g: 0.21192263, b: 0.25835258, a: 1}
+  m_IndirectSpecularColor: {r: 0.17545852, g: 0.21192223, b: 0.25835192, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -275,7 +275,7 @@ MonoBehaviour:
     - {fileID: 986387884}
     - {fileID: 699396037}
     - {fileID: 2732607}
-    - {fileID: 0}
+    - {fileID: 3849334473882073872}
   offset: {x: 0, y: 0.5, z: 0}
 --- !u!65 &21912921
 BoxCollider:
@@ -1922,7 +1922,7 @@ MonoBehaviour:
   neighbours:
     tiles:
     - {fileID: 8691411599375713582}
-    - {fileID: 0}
+    - {fileID: 3849334473882073872}
     - {fileID: 986387884}
     - {fileID: 0}
   offset: {x: 0, y: 0.5, z: 0}
@@ -4865,7 +4865,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbours:
     tiles:
-    - {fileID: 0}
+    - {fileID: 3849334473882073872}
     - {fileID: 1737953491}
     - {fileID: 699396037}
     - {fileID: 682670648}
@@ -5365,7 +5365,7 @@ PrefabInstance:
     - target: {fileID: 3849334473614874412, guid: ab60ed8431b622147b908eb2ae3b4951,
         type: 3}
       propertyPath: magnets.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3849334473614874412, guid: ab60ed8431b622147b908eb2ae3b4951,
         type: 3}
@@ -5420,10 +5420,22 @@ PrefabInstance:
     - target: {fileID: 3849334473614874413, guid: ab60ed8431b622147b908eb2ae3b4951,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab60ed8431b622147b908eb2ae3b4951, type: 3}
+--- !u!114 &3849334473882073872 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3849334473614874412, guid: ab60ed8431b622147b908eb2ae3b4951,
+    type: 3}
+  m_PrefabInstance: {fileID: 3849334473882073871}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 064f9c243d798e8419cb2a9af9568193, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!65 &4590931810910014847
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5756,7 +5768,7 @@ PrefabInstance:
     - target: {fileID: 6841323869528680486, guid: b616dd49fd249ce4090b1f01620c2127,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6841323869528680487, guid: b616dd49fd249ce4090b1f01620c2127,
         type: 3}

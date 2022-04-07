@@ -117,7 +117,10 @@ MonoBehaviour:
     - {fileID: 0}
   offset: {x: 0, y: 0.5, z: 0}
   activable: []
+  magnets: []
   mesh: {fileID: 3849334474643844470}
+  downOffset: 0.46
+  feebackPressed: {fileID: 11400000, guid: bad2a0d7ff95d674baea16e69e7d7455, type: 2}
 --- !u!1 &3849334474643844470
 GameObject:
   m_ObjectHideFlags: 0
