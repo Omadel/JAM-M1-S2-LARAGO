@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0.99999905, b: 0.99999905, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -154,6 +154,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1568621893990437920, guid: 6b799a0d4f45bcb4c8d07e8f4808234c,
+        type: 3}
+      propertyPath: StepBeforMove
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1568621893990437920, guid: 6b799a0d4f45bcb4c8d07e8f4808234c,
+        type: 3}
+      propertyPath: TrainFirstDir
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1568621893990437921, guid: 6b799a0d4f45bcb4c8d07e8f4808234c,
         type: 3}
       propertyPath: m_RootOrder
@@ -1330,7 +1340,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3947f1f0fe6f9d7448b4b18cdb406bf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: 2
+  size: 1
   locomotivePrefab: {fileID: 7474079268955237342, guid: b9fae5b17e9251443b4980a1e5d2b88c,
     type: 3}
   straightWagonPrefab: {fileID: 3190651559235468456, guid: f61d9ee1ca77ccf489f0db81d21694b6,
@@ -1342,15 +1352,6 @@ MonoBehaviour:
   turnWagon: {fileID: 4527738356457939358, guid: c653c3386b25a144d81cf893b4cd46ae,
     type: 3}
   wagons:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
 --- !u!1001 &1979124381
