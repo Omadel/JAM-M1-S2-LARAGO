@@ -12,22 +12,9 @@ public class EndTile : Tile
     {
         Instance = this;
     }
-
-    Ray ray;
-    [SerializeField]
-    LayerMask layer_mask;
-
-    private void Start()
+    
+    public void DisplayWin()
     {
-        ray = new Ray(transform.position, Vector3.up);
-        Train.instance.OnMove += CheckCollision;
-    }
-
-    private void CheckCollision(bool _, Vector3 __)
-    {
-        Debug.DrawRay(ray.origin,ray.direction,Color.yellow);
-        if (!Physics.Raycast(ray, out RaycastHit hit, 1f, layer_mask, QueryTriggerInteraction.Collide)) return;
-        if (!hit.collider.isTrigger) return;
         UIManager.Instance.WinUI();
     }
 }

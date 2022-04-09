@@ -1441,38 +1441,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &1967531161 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1568621893990437930, guid: 6b799a0d4f45bcb4c8d07e8f4808234c,
-    type: 3}
-  m_PrefabInstance: {fileID: 133648525}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1967531162
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1967531161}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3947f1f0fe6f9d7448b4b18cdb406bf4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  size: 1
-  locomotivePrefab: {fileID: 7474079268955237342, guid: b9fae5b17e9251443b4980a1e5d2b88c,
-    type: 3}
-  straightWagonPrefab: {fileID: 3190651559235468456, guid: f61d9ee1ca77ccf489f0db81d21694b6,
-    type: 3}
-  lastWagonPrefab: {fileID: 8235461932723631620, guid: d61e9aa4053fc86438b23cc3cdbfc74d,
-    type: 3}
-  straightWagon: {fileID: -6782036004744912837, guid: a46e06b398e645f40aba3eb74a19764b,
-    type: 3}
-  turnWagon: {fileID: 4527738356457939358, guid: c653c3386b25a144d81cf893b4cd46ae,
-    type: 3}
-  wagons:
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!1001 &1979124381
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -45,7 +45,6 @@ using UnityEngine;
             }
             else
             {
-                
                 if (currentTile.neighbours.tiles[(int)currentDirection] != null)
                 {
                     Move(currentDirection);
@@ -54,6 +53,15 @@ using UnityEngine;
                 {
                     UIManager.Instance.LoosePlayerUI();
                 }
+            }
+        }
+
+        protected override void Move(Direction direction)
+        {
+            base.Move(direction);
+            if (currentTile.TryGetComponent<EndTile>(out EndTile end))
+            {
+                end.DisplayWin();
             }
         }
 
