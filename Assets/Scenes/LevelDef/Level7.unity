@@ -2128,7 +2128,7 @@ PrefabInstance:
     - target: {fileID: 1568621893990437920, guid: 6b799a0d4f45bcb4c8d07e8f4808234c,
         type: 3}
       propertyPath: StepBeforMove
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1568621893990437920, guid: 6b799a0d4f45bcb4c8d07e8f4808234c,
         type: 3}

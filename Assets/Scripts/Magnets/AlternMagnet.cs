@@ -69,14 +69,14 @@ public class AlternMagnet : Magnet
             DownFx.SetActive(false);
             animator.SetTrigger("Right");
         }
-
-
+        SetDeathDirection(direction);
     }
 
     public void SwitchDir(bool fistDir)
     {
         if (IsFirst)
         {
+
 
             SetDir(firstDirection);
             if (firstDirection == Direction.Left || firstDirection == Direction.Right)
@@ -117,6 +117,8 @@ public class AlternMagnet : Magnet
             }
             IsFirst = true;
         }
+        SetDeathDirection(direction);
+
 
     }
     private void AlternPlate(bool arg1, Vector3 arg2)
@@ -179,6 +181,8 @@ public class AlternMagnet : Magnet
                 }
                 IsFirst = true;
             }
+            SetDeathDirection(direction);
+
         }
     }
 
