@@ -82,20 +82,11 @@ public class PlayerMovement : MovableObject
             }
             if (results.Count == 0)
             {
-<<<<<<< Updated upstream
-                test= false;
-                
-            }
-            else
-            {
-                test= true;
-=======
                 result= false;
             }
             else
             {
                 result= true;
->>>>>>> Stashed changes
                 break;
             }
         }
