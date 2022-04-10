@@ -21,7 +21,7 @@ namespace LaraGoLike
             go.AddComponent<BoxCollider>().isTrigger = true;
             wagons.Add(go.transform);
 
-            for(int i = 1; i < size; i++)
+            for (int i = 1; i < size; i++)
             {
                 go = GameObject.Instantiate(straightWagonPrefab, trainParent.transform);
                 go.AddComponent<BoxCollider>().isTrigger = true;
@@ -35,13 +35,13 @@ namespace LaraGoLike
             wagons.Add(go.transform);
             GetComponent<Train>().OnMove += Move;
             await Task.Delay(100);
-            SceneManager.MoveGameObjectToScene(trainParent,SceneManager.GetActiveScene());
+            SceneManager.MoveGameObjectToScene(trainParent, SceneManager.GetActiveScene());
         }
 
         private void Move(bool sucess, Vector3 direction)
         {
-            if(!sucess) return;
-            for(int i = wagons.Count - 1; i >= 1; i--)
+            if (!sucess) return;
+            for (int i = wagons.Count - 1; i >= 1; i--)
             {
                 Transform wagon = wagons[i];
                 Transform precWagon = wagons[i - 1];
@@ -49,7 +49,7 @@ namespace LaraGoLike
             }
             wagons[0].position += direction;
             wagons[0].forward = direction;
-            for(int i = 1; i < wagons.Count - 1; i++)
+            for (int i = 1; i < wagons.Count - 1; i++)
             {
                 Transform wagon = wagons[i];
                 Transform precWagon = wagons[i - 1];
@@ -58,22 +58,29 @@ namespace LaraGoLike
                 Vector3 back = wagon.position - nextWagon.position;
                 MeshFilter renderer = wagon.GetComponent<MeshFilter>();
                 wagon.forward = forward;
-                if(back != forward)
+                if (back != forward)
                 {
                     renderer.mesh = turnWagon;
-                    if(back == -wagon.right)
+                    if (back == -wagon.right)
                     {
                         wagon.Rotate(Vector3.up * 90, Space.Self);
                     }
-                } else
+                }
+                else
                 {
                     renderer.mesh = straightWagon;
                 }
-                wagon.GetComponent<TrainPart>().OnMoveMethod();
-                
+            }
+            foreach (var wagon in wagons)
+            {
+                if (wagon.TryGetComponent<TrainPart>(out TrainPart trainPart))
+                {
+
+                    trainPart.OnMoveMethod();
+                }
             }
             wagons[wagons.Count - 1].forward = wagons[wagons.Count - 2].position - wagons[wagons.Count - 1].position;
-          
+
         }
     }
 }
