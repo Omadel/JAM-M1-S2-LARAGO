@@ -48,22 +48,20 @@ public class UIManager : Etienne.Singleton<UIManager>
 
     public void WinUI()
     {
+        GameObject.Destroy(PlayerMovement.instance.gameObject);
+        int currentScene = SceneManager.GetActiveScene().buildIndex;
+        Save.HasPlayed = true;
+        Save.SetLevelCompleted(currentScene);
         this.gameObject.SetActive(true);
-        
+        NextLevelButton.SetActive(true);
         LevelSelection.SetActive(false);
         _EndGameText.text = "You win !";
     }
     
-    public void Options()
-    {
-        Debug.Log("C'est les options ");
-    }
 
     public void NextLevel()
     {
         int currentScene = SceneManager.GetActiveScene().buildIndex;
-        Save.HasPlayed = true;
-        Save.SetLevelCompleted(currentScene);
         LevelLoader.Instance.UnloadLevels(currentScene).LoadLevels(currentScene + 1).StartLoading();
         DOTween.KillAll();
     }

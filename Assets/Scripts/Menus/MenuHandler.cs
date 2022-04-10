@@ -22,7 +22,7 @@ namespace LaraGoLike
 
         private void ContinueGame()
         {
-            LevelLoader.Instance.LoadLevels(Save.GetLastLevelCompleted()).UnloadLevels(Scene.MainMenu).StartLoading();
+            LevelLoader.Instance.LoadLevels(Save.GetLastLevelCompleted()+1).UnloadLevels(Scene.MainMenu).StartLoading();
             Debug.Log("ContinueGame");
         }
 
