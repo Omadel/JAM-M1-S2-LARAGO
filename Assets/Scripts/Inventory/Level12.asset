@@ -15,7 +15,7 @@ MonoBehaviour:
   magnets:
   - magnet: 3
     number: 1
-  - magnet: 2
+  - magnet: 1
     number: 1
   - magnet: 4
     number: 1

@@ -329,7 +329,7 @@ PrefabInstance:
         type: 3}
       propertyPath: neighbours.tiles.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1461818381}
     - target: {fileID: 562578837223088767, guid: ecb0c71790ecca247ae00a5b2bd3bf45,
         type: 3}
       propertyPath: neighbours.tiles.Array.data[1]
@@ -493,12 +493,17 @@ PrefabInstance:
     - target: {fileID: 5323419972656624451, guid: e229bb0b20df0f745ac133a6af2c7e47,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.97
+      value: 3.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 5323419972656624451, guid: e229bb0b20df0f745ac133a6af2c7e47,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4.67
       objectReference: {fileID: 0}
     - target: {fileID: 5323419972656624452, guid: e229bb0b20df0f745ac133a6af2c7e47,
         type: 3}
       propertyPath: orthographic size
-      value: 6.96
+      value: 5.83
       objectReference: {fileID: 0}
     - target: {fileID: 5323419973842502838, guid: e229bb0b20df0f745ac133a6af2c7e47,
         type: 3}
@@ -526,6 +531,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2087821230478844450, guid: b616dd49fd249ce4090b1f01620c2127,
         type: 3}
+      propertyPath: neighbours.tiles.Array.data[1]
+      value: 
+      objectReference: {fileID: 673306179}
+    - target: {fileID: 2087821230478844450, guid: b616dd49fd249ce4090b1f01620c2127,
+        type: 3}
       propertyPath: neighbours.tiles.Array.data[2]
       value: 
       objectReference: {fileID: 1728039909}
@@ -533,7 +543,7 @@ PrefabInstance:
         type: 3}
       propertyPath: neighbours.tiles.Array.data[3]
       value: 
-      objectReference: {fileID: 154491671}
+      objectReference: {fileID: 1715966037}
     - target: {fileID: 6841323869528680484, guid: b616dd49fd249ce4090b1f01620c2127,
         type: 3}
       propertyPath: m_RootOrder
@@ -552,7 +562,7 @@ PrefabInstance:
     - target: {fileID: 6841323869528680484, guid: b616dd49fd249ce4090b1f01620c2127,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6841323869528680484, guid: b616dd49fd249ce4090b1f01620c2127,
         type: 3}
@@ -783,6 +793,11 @@ PrefabInstance:
       propertyPath: neighbours.tiles.Array.data[1]
       value: 
       objectReference: {fileID: 1741347002}
+    - target: {fileID: 3849334473614874412, guid: ab60ed8431b622147b908eb2ae3b4951,
+        type: 3}
+      propertyPath: neighbours.tiles.Array.data[2]
+      value: 
+      objectReference: {fileID: 1461818381}
     - target: {fileID: 3849334473614874413, guid: ab60ed8431b622147b908eb2ae3b4951,
         type: 3}
       propertyPath: m_Name
@@ -957,7 +972,7 @@ PrefabInstance:
     - target: {fileID: 1568621893990437920, guid: 6b799a0d4f45bcb4c8d07e8f4808234c,
         type: 3}
       propertyPath: StepBeforMove
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1568621893990437920, guid: 6b799a0d4f45bcb4c8d07e8f4808234c,
         type: 3}
@@ -1126,7 +1141,7 @@ PrefabInstance:
         type: 3}
       propertyPath: neighbours.tiles.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1728039909}
     - target: {fileID: 562578837223088767, guid: ecb0c71790ecca247ae00a5b2bd3bf45,
         type: 3}
       propertyPath: neighbours.tiles.Array.data[1]
@@ -1220,7 +1235,7 @@ PrefabInstance:
         type: 3}
       propertyPath: neighbours.tiles.Array.data[1]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 158379229}
     - target: {fileID: 562578837223088767, guid: ecb0c71790ecca247ae00a5b2bd3bf45,
         type: 3}
       propertyPath: neighbours.tiles.Array.data[3]
@@ -1249,7 +1264,7 @@ PrefabInstance:
     - target: {fileID: 6284599360196439632, guid: ecb0c71790ecca247ae00a5b2bd3bf45,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6284599360196439632, guid: ecb0c71790ecca247ae00a5b2bd3bf45,
         type: 3}
@@ -1429,7 +1444,7 @@ PrefabInstance:
         type: 3}
       propertyPath: neighbours.tiles.Array.data[2]
       value: 
-      objectReference: {fileID: 1461818381}
+      objectReference: {fileID: 0}
     - target: {fileID: 562578837223088767, guid: ecb0c71790ecca247ae00a5b2bd3bf45,
         type: 3}
       propertyPath: neighbours.tiles.Array.data[3]
