@@ -68,7 +68,7 @@ public class PlayerMovement : MovableObject
     }
     bool TestForUI(Vector2 pos)
     {
-        bool test=false;
+        bool result=false;
         foreach (var canva in canvasPointer)
         {
             List<RaycastResult> results = new List<RaycastResult>();
@@ -82,16 +82,24 @@ public class PlayerMovement : MovableObject
             }
             if (results.Count == 0)
             {
+<<<<<<< Updated upstream
                 test= false;
                 
             }
             else
             {
                 test= true;
+=======
+                result= false;
+            }
+            else
+            {
+                result= true;
+>>>>>>> Stashed changes
                 break;
             }
         }
-        return test;
+        return result;
     }
     private void StartMoveClick(InputAction.CallbackContext obj)
     {
