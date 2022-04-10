@@ -12,7 +12,6 @@ public class UIManager : Etienne.Singleton<UIManager>
     public GameObject NextLevelButton;
     public GameObject LevelSelection;
     public GameObject Buttons;
-    
     TextMeshProUGUI _EndGameText;
 
     protected override void Awake()
