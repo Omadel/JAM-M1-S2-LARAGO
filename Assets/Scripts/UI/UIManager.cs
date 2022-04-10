@@ -28,8 +28,9 @@ public class UIManager : Etienne.Singleton<UIManager>
 
     public void LooseTrainUI()
     {
-        PlayerMovement.instance.OnDestroy();
+        GameObject.Destroy(PlayerMovement.instance.gameObject);
         this.gameObject.SetActive(true);
+        Buttons.SetActive(true);
         NextLevelButton.SetActive(false);
         LevelSelection.SetActive(false);
         _EndGameText.text = "Your train hit something !";
@@ -37,8 +38,9 @@ public class UIManager : Etienne.Singleton<UIManager>
 
     public void LoosePlayerUI()
     {
-        PlayerMovement.instance.OnDestroy();
+        GameObject.Destroy(PlayerMovement.instance.gameObject);
         this.gameObject.SetActive(true);
+        Buttons.SetActive(true);
         NextLevelButton.SetActive(false);
         LevelSelection.SetActive(false);
         _EndGameText.text = "Your player hit something !";
@@ -70,6 +72,7 @@ public class UIManager : Etienne.Singleton<UIManager>
     {
         Buttons.SetActive(false);
         LevelSelection.SetActive(true);
+        LevelSelection.GetComponent<LevelSelection>().SetunloadScene();
     }
     
     public void Retry()

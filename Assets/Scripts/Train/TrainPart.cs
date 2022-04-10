@@ -1,7 +1,7 @@
 using UnityEngine;
 public class TrainPart : MovableObject
 {
-    public void OnMove()
+    public void OnMoveMethod()
     {
         if(currentTile!=null)
             currentTile.ExecuteExitCode();

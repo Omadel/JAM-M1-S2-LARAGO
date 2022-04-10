@@ -1,5 +1,5 @@
-using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace LaraGoLike
 {
@@ -7,12 +7,21 @@ namespace LaraGoLike
     {
         [SerializeField] private Transform levelButtonParent;
         [SerializeField] private GameObject levelButtonPrefab;
+        
+        public void SetunloadScene()
+        {
+            foreach (var button in GetComponentsInChildren<LevelButton>())
+            {
+                button.SetUnloadIndex(SceneManager.GetActiveScene().buildIndex);
+            }
+        }
 
         private void Awake()
         {
-            EditorBuildSettingsScene[] scenes = EditorBuildSettings.scenes;
+            //EditorBuildSettingsScene[] scenes = EditorBuildSettings.scenes;
+            
             int lastLevel = Save.GetLastLevelCompleted();
-            for(int i = (int)Scene.MainMenu + 1; i < scenes.Length; i++)
+            for(int i = (int)Scene.MainMenu + 1; i <  SceneManager.sceneCountInBuildSettings; i++)
             {
                 int index = i - (int)Scene.MainMenu + 1;
 

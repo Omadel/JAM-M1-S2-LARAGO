@@ -6,6 +6,9 @@ namespace LaraGoLike
     public class LevelButton : MonoBehaviour
     {
         private TMPro.TextMeshProUGUI uGUI;
+        private int UnloadIndex = (int)Scene.MainMenu;
+        private int LevelIndex = 0;
+        
         private void OnEnable()
         {
             uGUI = GetComponentInChildren<TMPro.TextMeshProUGUI>();
@@ -13,10 +16,20 @@ namespace LaraGoLike
 
         public void Init(int index)
         {
-            int levelIndex = index;
+            LevelIndex = index;
             uGUI.text = $"Level {index-1}";
             //todo : Audiopoool dont destroy on load;
-            GetComponent<BetterButton>().OnClick += () => LevelLoader.Instance.LoadLevels(levelIndex).UnloadLevels(Scene.MainMenu).StartLoading();
+            GetComponent<BetterButton>().OnClick = LoadLevel;
+        }
+
+        public void SetUnloadIndex(int index)
+        {
+            UnloadIndex = index;
+        }
+
+        private void LoadLevel()
+        {
+            LevelLoader.Instance.LoadLevels(LevelIndex).UnloadLevels(UnloadIndex).StartLoading();
         }
     }
 }

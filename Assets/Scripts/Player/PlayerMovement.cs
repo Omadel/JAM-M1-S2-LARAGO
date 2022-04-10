@@ -1,4 +1,5 @@
 using System;
+using DG.Tweening;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -54,6 +55,7 @@ public class PlayerMovement : MovableObject
         PlayerMovement.instance = null;
         mouseClick.action.started -= StartMoveClick;
         mouseClick.action.canceled -= CaluculateDirection;
+        transform.DOKill();
     }
 
     private void StartMoveClick(InputAction.CallbackContext obj)
