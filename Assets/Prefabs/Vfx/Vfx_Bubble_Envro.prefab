@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1738183689032168397}
   - component: {fileID: 7974210449408406050}
   m_Layer: 0
-  m_Name: Bubble_Vfx
+  m_Name: Vfx_Bubble_Envro
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
