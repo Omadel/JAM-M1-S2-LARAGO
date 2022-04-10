@@ -42,6 +42,12 @@ public class PlayerMovement : MovableObject
         mousePos.action.Enable();
     }
 
+    private void OnDisable()
+    {
+        mouseClick.action.Disable();
+        mousePos.action.Disable();
+    }
+
     private void Start()
     {
         GetCurrentTile();
