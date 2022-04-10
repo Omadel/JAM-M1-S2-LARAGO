@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using LaraGoLike;
 using UnityEngine;
 
     public class Train : MovableObject
@@ -61,7 +62,9 @@ using UnityEngine;
             base.Move(direction);
             if (currentTile.TryGetComponent<EndTile>(out EndTile end))
             {
+               
                 end.DisplayWin();
+                
             }
         }
 
