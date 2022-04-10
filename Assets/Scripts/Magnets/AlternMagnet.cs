@@ -76,8 +76,6 @@ public class AlternMagnet : Magnet
     {
         if (IsFirst)
         {
-
-
             SetDir(firstDirection);
             if (firstDirection == Direction.Left || firstDirection == Direction.Right)
             {
