@@ -71,7 +71,6 @@ public class PlayerMovement : MovableObject
         bool test=false;
         foreach (var canva in canvasPointer)
         {
-
             List<RaycastResult> results = new List<RaycastResult>();
 
             PointerEventData input = new PointerEventData(EventSystem.current);
@@ -84,10 +83,12 @@ public class PlayerMovement : MovableObject
             if (results.Count == 0)
             {
                 test= false;
+                
             }
             else
             {
                 test= true;
+                break;
             }
         }
         return test;
