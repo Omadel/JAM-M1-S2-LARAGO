@@ -26,6 +26,8 @@ public class AlternMagnet : Magnet
         direction = firstDirection;
         SetDeathDirection(direction);
         Alternate();
+        PlayerMovement.instance.OnMove += UpdatePossibleTrain;
+
     }
 
     private void FixedUpdate()

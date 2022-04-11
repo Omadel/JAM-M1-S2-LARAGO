@@ -70,7 +70,7 @@ public class Magnet : MonoBehaviour
         }
     }
 
-    void UpdatePossibleTrain(bool isMoving, Vector3 arg2)
+    protected void UpdatePossibleTrain(bool isMoving, Vector3 arg2)
     {
         StartCoroutine(Test());
     }
