@@ -21,6 +21,18 @@ public class Magnet : MonoBehaviour
         SetDeathDirection(direction);
         transform.GetChild(0).localRotation=Quaternion.Euler(0,rotation[(int)direction],0);
         PlayerMovement.instance.OnMove +=UpdatePossibleTrain;
+        GetCurrentTile();
+        
+    }
+    public void GetCurrentTile()
+    {
+        Ray ray = new Ray(transform.position, Vector3.down);
+        Debug.DrawRay(ray.origin, ray.direction, Color.black, 10f);
+        if (!Physics.Raycast(ray, out RaycastHit hit, 1f, LayerMask.GetMask("Default"))) return;
+        Debug.DrawLine(ray.origin, hit.point, Color.green, 10f);
+        if (hit.collider.TryGetComponent<Tile>(out Tile tile)) { };
+        Destroy(tile);
+        ExecuteAllCubeFindNeighbours.ExecuteOrder66();
     }
     public void  SetDir(Direction dir)
     {
@@ -78,7 +90,7 @@ public class Magnet : MonoBehaviour
     private IEnumerator Test()
     {
         yield return new WaitForSeconds(PlayerMovement.instance.moveDuration);
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 5; i++)
         {
             yield return new WaitForEndOfFrame();
         }

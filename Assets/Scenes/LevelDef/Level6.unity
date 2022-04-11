@@ -1618,23 +1618,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 180906903, guid: e229bb0b20df0f745ac133a6af2c7e47, type: 3}
-      propertyPath: m_Size.x
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 180906903, guid: e229bb0b20df0f745ac133a6af2c7e47, type: 3}
-      propertyPath: m_Size.y
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 180906903, guid: e229bb0b20df0f745ac133a6af2c7e47, type: 3}
-      propertyPath: m_Size.z
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2392333912135455306, guid: e229bb0b20df0f745ac133a6af2c7e47,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 3220277267810394998, guid: e229bb0b20df0f745ac133a6af2c7e47,
         type: 3}
       propertyPath: m_RootOrder
@@ -1690,12 +1673,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3319512364909738714, guid: e229bb0b20df0f745ac133a6af2c7e47,
-        type: 3}
-      propertyPath: magnetsList
-      value: 
-      objectReference: {fileID: 11400000, guid: 1699ab30cc4227543a7e5721527772ca,
-        type: 2}
     - target: {fileID: 5323419972087142629, guid: e229bb0b20df0f745ac133a6af2c7e47,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -1710,26 +1687,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5323419972656624451, guid: e229bb0b20df0f745ac133a6af2c7e47,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.74
-      objectReference: {fileID: 0}
-    - target: {fileID: 5323419972656624451, guid: e229bb0b20df0f745ac133a6af2c7e47,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 4.84
-      objectReference: {fileID: 0}
-    - target: {fileID: 5323419972656624451, guid: e229bb0b20df0f745ac133a6af2c7e47,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 5.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 5323419972656624452, guid: e229bb0b20df0f745ac133a6af2c7e47,
-        type: 3}
-      propertyPath: orthographic size
-      value: 6.24
       objectReference: {fileID: 0}
     - target: {fileID: 5323419973842502838, guid: e229bb0b20df0f745ac133a6af2c7e47,
         type: 3}
@@ -1746,9 +1703,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: LVPrefab
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2392333912135455306, guid: e229bb0b20df0f745ac133a6af2c7e47, type: 3}
-    - {fileID: 2577425002828806470, guid: e229bb0b20df0f745ac133a6af2c7e47, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e229bb0b20df0f745ac133a6af2c7e47, type: 3}
 --- !u!114 &926185971 stripped
 MonoBehaviour:
@@ -2504,21 +2459,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1568621893990437920, guid: 6b799a0d4f45bcb4c8d07e8f4808234c,
-        type: 3}
-      propertyPath: moveDuration
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1568621893990437920, guid: 6b799a0d4f45bcb4c8d07e8f4808234c,
-        type: 3}
-      propertyPath: StepBeforMove
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1568621893990437920, guid: 6b799a0d4f45bcb4c8d07e8f4808234c,
-        type: 3}
-      propertyPath: TrainFirstDir
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1568621893990437921, guid: 6b799a0d4f45bcb4c8d07e8f4808234c,
         type: 3}
       propertyPath: m_RootOrder
@@ -2578,16 +2518,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Train
-      objectReference: {fileID: 0}
-    - target: {fileID: 6568504668067171900, guid: 6b799a0d4f45bcb4c8d07e8f4808234c,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6568504668067171900, guid: 6b799a0d4f45bcb4c8d07e8f4808234c,
-        type: 3}
-      propertyPath: m_Size.z
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b799a0d4f45bcb4c8d07e8f4808234c, type: 3}
