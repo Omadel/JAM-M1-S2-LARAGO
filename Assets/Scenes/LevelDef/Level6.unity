@@ -1618,6 +1618,23 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 180906903, guid: e229bb0b20df0f745ac133a6af2c7e47, type: 3}
+      propertyPath: m_Size.x
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 180906903, guid: e229bb0b20df0f745ac133a6af2c7e47, type: 3}
+      propertyPath: m_Size.y
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 180906903, guid: e229bb0b20df0f745ac133a6af2c7e47, type: 3}
+      propertyPath: m_Size.z
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2392333912135455306, guid: e229bb0b20df0f745ac133a6af2c7e47,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3220277267810394998, guid: e229bb0b20df0f745ac133a6af2c7e47,
         type: 3}
       propertyPath: m_RootOrder
@@ -1729,7 +1746,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: LVPrefab
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2392333912135455306, guid: e229bb0b20df0f745ac133a6af2c7e47, type: 3}
+    - {fileID: 2577425002828806470, guid: e229bb0b20df0f745ac133a6af2c7e47, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e229bb0b20df0f745ac133a6af2c7e47, type: 3}
 --- !u!114 &926185971 stripped
 MonoBehaviour:
@@ -2487,6 +2506,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1568621893990437920, guid: 6b799a0d4f45bcb4c8d07e8f4808234c,
         type: 3}
+      propertyPath: moveDuration
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1568621893990437920, guid: 6b799a0d4f45bcb4c8d07e8f4808234c,
+        type: 3}
       propertyPath: StepBeforMove
       value: 2
       objectReference: {fileID: 0}
@@ -2554,6 +2578,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Train
+      objectReference: {fileID: 0}
+    - target: {fileID: 6568504668067171900, guid: 6b799a0d4f45bcb4c8d07e8f4808234c,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6568504668067171900, guid: 6b799a0d4f45bcb4c8d07e8f4808234c,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b799a0d4f45bcb4c8d07e8f4808234c, type: 3}

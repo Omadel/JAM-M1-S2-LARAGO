@@ -77,8 +77,9 @@ public class Magnet : MonoBehaviour
 
     private IEnumerator Test()
     {
+        yield return new WaitForSeconds(PlayerMovement.instance.moveDuration);
         for (int i = 0; i < 4; i++)
-        { 
+        {
             yield return new WaitForEndOfFrame();
         }
 

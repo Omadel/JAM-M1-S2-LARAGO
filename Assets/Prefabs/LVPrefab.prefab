@@ -327,19 +327,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a45fe51b1458fa4cb84acf8081ed785, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!65 &180906903
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5323419972400746462}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.8, y: 0.8, z: 0.8}
-  m_Center: {x: 0, y: 0.4, z: 0}
 --- !u!54 &180906900
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -356,7 +343,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
---- !u!65 &2392333912135455306
+--- !u!65 &180906903
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -367,7 +354,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.8, y: 0.8, z: 0.8}
+  m_Size: {x: 0.3, y: 0.8, z: 0.3}
   m_Center: {x: 0, y: 0.4, z: 0}
 --- !u!1 &5323419972656624454
 GameObject:
@@ -398,7 +385,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5323419972656624454}
   m_LocalRotation: {x: -0.07276608, y: 0.8932372, z: -0.41510907, w: -0.15657902}
-  m_LocalPosition: {x: 3.37, y: 4.6891985, z: 5.07}
+  m_LocalPosition: {x: -0.74, y: 4.84, z: 5.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3220277267810394998}
@@ -431,7 +418,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5.61
+  orthographic size: 6.24
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -912,7 +899,7 @@ PrefabInstance:
     - target: {fileID: 136925674, guid: 718910dd5c29ee140bb21c89a54e942e, type: 3}
       propertyPath: magnetsList
       value: 
-      objectReference: {fileID: 11400000, guid: f021491c3b558a94d9a757a9cf36db46,
+      objectReference: {fileID: 11400000, guid: 1699ab30cc4227543a7e5721527772ca,
         type: 2}
     - target: {fileID: 1881174568, guid: 718910dd5c29ee140bb21c89a54e942e, type: 3}
       propertyPath: m_UiScaleMode
@@ -1063,7 +1050,8 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 996875012827599478, guid: 718910dd5c29ee140bb21c89a54e942e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 718910dd5c29ee140bb21c89a54e942e, type: 3}
 --- !u!223 &5323419972544835486 stripped
 Canvas:

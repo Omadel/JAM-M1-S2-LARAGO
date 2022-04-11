@@ -46,10 +46,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79d90c18d5631ae46a6f0a38299ca23f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveDuration: 0.2
+  moveDuration: 0
   currentTile: {fileID: 0}
-  TrainFirstDir: 3
-  StepBeforMove: 0
+  TrainFirstDir: 0
+  StepBeforMove: 2
 --- !u!114 &1153345511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85,7 +85,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.8, y: 1, z: 0.8}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!1 &1568621894068262974
 GameObject:

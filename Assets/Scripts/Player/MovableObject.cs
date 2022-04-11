@@ -6,7 +6,7 @@ public abstract class MovableObject : MonoBehaviour
 
     public System.Action<bool,Vector3> OnMove;
 
-    [SerializeField] protected float moveDuration = 0.2f;
+    [SerializeField] public float moveDuration = 0.2f;
     public Tile currentTile;
     private bool isMoving = false;
     Vector3 currentVectorDirection;

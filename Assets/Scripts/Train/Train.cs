@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections;
+using System;
 
 public class Train : MovableObject
 {
@@ -29,11 +31,21 @@ public class Train : MovableObject
     {
         moveDuration = Time.deltaTime;
 
-        PlayerMovement.instance.OnMove += MoveDir;
+        PlayerMovement.instance.OnMove += StartMove;
         GetCurrentTile();
         currentDirection = TrainFirstDir;
     }
 
+    private void StartMove(bool arg1, Vector3 arg2)
+    {
+        StartCoroutine(LateMove(arg1,arg2));
+    }
+
+    IEnumerator LateMove(bool isMoving, Vector3 arg2)
+    {
+        yield return new WaitForSeconds(PlayerMovement.instance.moveDuration);
+        MoveDir(isMoving, arg2);
+    }
     private void MoveDir(bool isMoving, Vector3 arg2)
     {
         if (isMoving == false) return;
