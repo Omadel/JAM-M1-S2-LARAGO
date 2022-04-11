@@ -1,96 +1,93 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using LaraGoLike;
 using UnityEngine;
 
-    public class Train : MovableObject
+public class Train : MovableObject
+{
+    public static Train instance;
+
+    [Header("First Train Direction")]
+    public Direction TrainFirstDir;
+
+    [Header("Player Steps Before Train Move")]
+    public int StepBeforMove;
+
+
+    private int _compt = 0;
+    private Direction currentDirection;
+    float _timer;
+
+    void Awake()
     {
-        public static Train instance;
-        
-        [Header("First Train Direction")]
-        public Direction TrainFirstDir;
-        
-        [Header("Player Steps Before Train Move")]
-        public int StepBeforMove;
-        
-
-        private int _compt = 0;
-        private Direction currentDirection;
-        float _timer;
-        
-        void Awake()
+        if (Train.instance != null)
         {
-        moveDuration = 0;
-            if (Train.instance != null)
-            {
-                Debug.LogError("This is more than One Train");
-            }
-            Train.instance = this;
+            Debug.LogError("This is more than One Train");
         }
+        Train.instance = this;
+    }
 
 
-        public void Start()
+    public void Start()
+    {
+        moveDuration = Time.deltaTime;
+
+        PlayerMovement.instance.OnMove += MoveDir;
+        GetCurrentTile();
+        currentDirection = TrainFirstDir;
+    }
+
+    private void MoveDir(bool isMoving, Vector3 arg2)
+    {
+        if (isMoving == false) return;
+
+        if (_compt <= StepBeforMove - 1)
         {
-            PlayerMovement.instance.OnMove += MoveDir;
-            GetCurrentTile();
-            currentDirection = TrainFirstDir;
+            _compt++;
         }
-
-        private void MoveDir(bool isMoving, Vector3 arg2)
+        else
         {
-            if (isMoving == false) return;
-            
-            if (_compt <= StepBeforMove-1)
+            if (currentTile.neighbours.tiles[(int)currentDirection] != null)
             {
-                _compt++;
+                Move(currentDirection);
             }
             else
             {
-                if (currentTile.neighbours.tiles[(int)currentDirection] != null)
-                {
-                    Move(currentDirection);
-                }
-                else
-                {
-                    UIManager.Instance.LoosePlayerUI();
-                }
-            }
-        }
-
-        protected override void Move(Direction direction)
-        {
-            base.Move(direction);
-            if (currentTile.TryGetComponent<EndTile>(out EndTile end))
-            {
-               
-                end.DisplayWin();
-                
-            }
-        }
-
-        private void OnCollisionEnter(Collision collision)
-        {
-            PlayerMovement player;
-            if (collision.gameObject.TryGetComponent<PlayerMovement>(out player))
-            {
                 UIManager.Instance.LoosePlayerUI();
-                Destroy(collision.gameObject);
             }
-        }
-
-        public void Rotate(Direction direction)
-        {
-            currentDirection = direction;
-        }
-
-        public Direction GetDirection()
-        {
-            return currentDirection;
-        }
-
-        public void SetDirection(Direction dir)
-        {
-            currentDirection = dir;
         }
     }
+
+    protected override void Move(Direction direction)
+    {
+        base.Move(direction);
+        if (currentTile.TryGetComponent<EndTile>(out EndTile end))
+        {
+
+            end.DisplayWin();
+
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        PlayerMovement player;
+        if (collision.gameObject.TryGetComponent<PlayerMovement>(out player))
+        {
+            UIManager.Instance.LoosePlayerUI();
+            Destroy(collision.gameObject);
+        }
+    }
+
+    public void Rotate(Direction direction)
+    {
+        currentDirection = direction;
+    }
+
+    public Direction GetDirection()
+    {
+        return currentDirection;
+    }
+
+    public void SetDirection(Direction dir)
+    {
+        currentDirection = dir;
+    }
+}

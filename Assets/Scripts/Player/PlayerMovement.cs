@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
@@ -11,6 +12,7 @@ public class PlayerMovement : MovableObject
     public static PlayerMovement instance;
     public Etienne.Feedback.GameEvent feebackMove;
     public Canvas[] canvasPointer;
+    [SerializeField]bool lockMove=false;
 
     private void Awake()
     {
@@ -94,17 +96,26 @@ public class PlayerMovement : MovableObject
     }
     private void StartMoveClick(InputAction.CallbackContext obj)
     {
-        if (TestForUI(mousePos.action.ReadValue<Vector2>()) || Spawnner.instance.isPuttingMagnet)
+        if (TestForUI(mousePos.action.ReadValue<Vector2>()) || Spawnner.instance.isPuttingMagnet || lockMove == true)
         {
             isNotMovable = true;
             return;
         }
-        startPosition = mousePos.action.ReadValue<Vector2>();
-        pointer.gameObject.SetActive(true);
-        pointer.startPoint = startPosition;
-        pointer.GetComponent<RectTransform>().localPosition = startPosition - new Vector2(Screen.width / 2f, Screen.height / 2f);
+        else
+        {
+            StartCoroutine(LockMoveS());
+            startPosition = mousePos.action.ReadValue<Vector2>();
+            pointer.gameObject.SetActive(true);
+            pointer.startPoint = startPosition;
+            pointer.GetComponent<RectTransform>().localPosition = startPosition - new Vector2(Screen.width / 2f, Screen.height / 2f);
+        }
     }
-
+    IEnumerator LockMoveS()
+    {
+        lockMove = true;
+        yield return new WaitForSeconds(moveDuration+0.1f);
+        lockMove = false;
+    }
     public void CaluculateDirection(InputAction.CallbackContext obj)
     {
         if (isNotMovable == false)

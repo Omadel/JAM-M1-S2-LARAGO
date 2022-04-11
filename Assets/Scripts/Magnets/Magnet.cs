@@ -13,7 +13,6 @@ public class Magnet : MonoBehaviour
     [SerializeField]
     LayerMask layer_mask;
     int[] rotation = new int[] { 0, 180, 90, -90 };
-    public bool test;
 
 
     void Start()
@@ -78,20 +77,20 @@ public class Magnet : MonoBehaviour
 
     private IEnumerator Test()
     {
-        yield return new WaitForEndOfFrame();
-        yield return new WaitForEndOfFrame();
-        if (Physics.Raycast(ray, out RaycastHit hit, 1.1f, layer_mask, QueryTriggerInteraction.Collide))
+        for (int i = 0; i < 4; i++)
+        { 
+            yield return new WaitForEndOfFrame();
+        }
+
+        if (Physics.Raycast(ray, out RaycastHit hit, 1f, layer_mask))
         {
 
-            if (hit.collider.GetComponent<Train>())
-            {
+            Debug.DrawRay(transform.position, ray.direction*1.1f, Color.blue, 2f);
 
+            if (hit.collider.TryGetComponent<Train>(out Train DD))
+            {
                 Debug.DrawRay(transform.position, ray.direction, Color.red, 15);
                 Debug.Log("hit.coll : " + hit.collider.name);
-                if (test == false)
-                {
-                    test = true;
-                }
                 if (Train.instance.GetDirection() == DeathDirection)
                 {
                     UIManager.Instance.LooseTrainUI();
