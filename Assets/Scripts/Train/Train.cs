@@ -21,6 +21,7 @@ using UnityEngine;
         
         void Awake()
         {
+        moveDuration = 0;
             if (Train.instance != null)
             {
                 Debug.LogError("This is more than One Train");

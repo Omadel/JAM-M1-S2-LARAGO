@@ -1,4 +1,5 @@
 using LaraGoLike;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,6 +13,7 @@ public class Magnet : MonoBehaviour
     [SerializeField]
     LayerMask layer_mask;
     int[] rotation = new int[] { 0, 180, 90, -90 };
+    public bool test;
 
 
     void Start()
@@ -19,6 +21,7 @@ public class Magnet : MonoBehaviour
         CheckDirection();
         SetDeathDirection(direction);
         transform.GetChild(0).localRotation=Quaternion.Euler(0,rotation[(int)direction],0);
+        PlayerMovement.instance.OnMove +=UpdatePossibleTrain;
     }
     public void  SetDir(Direction dir)
     {
@@ -68,19 +71,36 @@ public class Magnet : MonoBehaviour
         }
     }
 
-    void Update()
+    void UpdatePossibleTrain(bool isMoving, Vector3 arg2)
     {
-        if (!Physics.Raycast(ray, out RaycastHit hit, 1.1f, layer_mask, QueryTriggerInteraction.Collide)) return;
-        if (hit.collider.isTrigger)
+        StartCoroutine(Test());
+    }
+
+    private IEnumerator Test()
+    {
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        if (Physics.Raycast(ray, out RaycastHit hit, 1.1f, layer_mask, QueryTriggerInteraction.Collide))
         {
-            if (Train.instance.GetDirection() == DeathDirection )
+
+            if (hit.collider.GetComponent<Train>())
             {
-                UIManager.Instance.LooseTrainUI();
-                Destroy(Train.instance.gameObject);
-            }
-            else
-            {
-                Train.instance.Rotate(direction);
+
+                Debug.DrawRay(transform.position, ray.direction, Color.red, 15);
+                Debug.Log("hit.coll : " + hit.collider.name);
+                if (test == false)
+                {
+                    test = true;
+                }
+                if (Train.instance.GetDirection() == DeathDirection)
+                {
+                    UIManager.Instance.LooseTrainUI();
+                    Destroy(Train.instance.gameObject);
+                }
+                else
+                {
+                    Train.instance.Rotate(direction);
+                }
             }
         }
     }
