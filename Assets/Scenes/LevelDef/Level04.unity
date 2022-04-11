@@ -529,6 +529,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 845854373207147337, guid: b616dd49fd249ce4090b1f01620c2127,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e394f4dbf24d5d949a681e381e233417, type: 2}
     - target: {fileID: 2087821230478844450, guid: b616dd49fd249ce4090b1f01620c2127,
         type: 3}
       propertyPath: neighbours.tiles.Array.data[1]
@@ -803,6 +808,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PressurePlate
       objectReference: {fileID: 0}
+    - target: {fileID: 3849334474643844468, guid: ab60ed8431b622147b908eb2ae3b4951,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e394f4dbf24d5d949a681e381e233417, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab60ed8431b622147b908eb2ae3b4951, type: 3}
 --- !u!1001 &840914009

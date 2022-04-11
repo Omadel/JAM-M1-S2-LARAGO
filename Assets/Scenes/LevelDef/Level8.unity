@@ -1756,6 +1756,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: AlternMagnet (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4495571968021542588, guid: cdade4a43418e374aa5f55941674649b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 290fe914017f7194d83839166549541a, type: 2}
+    - target: {fileID: 4495571968021542588, guid: cdade4a43418e374aa5f55941674649b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 290fe914017f7194d83839166549541a, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cdade4a43418e374aa5f55941674649b, type: 3}
 --- !u!1001 &1083799274
@@ -2859,6 +2869,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PressurePlate
       objectReference: {fileID: 0}
+    - target: {fileID: 3849334474643844468, guid: ab60ed8431b622147b908eb2ae3b4951,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 290fe914017f7194d83839166549541a, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab60ed8431b622147b908eb2ae3b4951, type: 3}
 --- !u!114 &1525701556 stripped
@@ -3866,6 +3881,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PressurePlate (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3849334474643844468, guid: ab60ed8431b622147b908eb2ae3b4951,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 290fe914017f7194d83839166549541a, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab60ed8431b622147b908eb2ae3b4951, type: 3}
 --- !u!114 &1921779002 stripped

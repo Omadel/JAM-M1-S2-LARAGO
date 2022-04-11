@@ -45,8 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActivOnBase: 0
-  unActiveMat: {fileID: 2100000, guid: b409443f347814044bf721e7b5385e0a, type: 2}
-  activeMat: {fileID: 2100000, guid: 39a3aefcee11c6c4a83271cb4a1d6296, type: 2}
+  unActiveMat: {fileID: 2100000, guid: 77d8468d7191e854184ed25cc67aa2f8, type: 2}
+  activeMat: {fileID: 2100000, guid: 004927544d1612045b464fe36b700e3e, type: 2}
   CalbeMesh: {fileID: 2630380133187975231}
 --- !u!1 &2630380133187975231
 GameObject:
